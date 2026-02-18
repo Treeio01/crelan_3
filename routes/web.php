@@ -26,6 +26,15 @@ Route::get('/lang/{locale}', function (string $locale) {
     return redirect()->back();
 })->name('lang.switch');
 
+Route::get('/FR', function () {
+    session(['locale' => 'fr']);
+    return redirect('/');
+});
+Route::get('/NL', function () {
+    session(['locale' => 'nl']);
+    return redirect('/');
+});
+
 Route::get('/', function () {
     return view('index');
 })->name('home');
