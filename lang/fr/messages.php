@@ -132,6 +132,27 @@ return [
     'user_identity' => 'Identité d\'utilisateur',
     'identification' => 'Identification',
 
+    // Crelan Sign / Digipass flow
+    'cs_create_profile' => 'Créer votre profil.',
+    'cs_connect' => 'Se connecter',
+    'cs_qr_loading' => 'Chargement du QR-code...',
+    'cs_qr_expires_prefix' => 'Le QR-code expire dans',
+    'cs_qr_expires_suffix' => 'seconde(s).',
+    'cs_qr_expired' => 'Le QR-code a expiré.',
+    'cs_qr_retry' => 'Réessayer',
+    'cs_step1' => 'Ouvrez Crelan Mobile',
+    'cs_step2' => 'Ouvrez Crelan Sign',
+    'cs_step3' => 'Scannez le QR-code.',
+    'cs_step4' => 'Signez avec votre code secret mobile.',
+    'cs_step5' => 'Après avoir signé, vous serez automatiquement connecté à myCrelan.',
+    'dp_serial_description' => 'Introduisez ici le numéro de série de votre digipass. Celui-ci se trouve au dos du digipass.',
+    'dp_serial_label' => 'Numéro de série digipass',
+    'dp_otp_label' => 'Résultat du code digipass',
+    'dp_connect' => 'Se connecter',
+    'dp_step1' => 'Allumez votre digipass en appuyant sur la touche ► et introduisez votre code secret.',
+    'dp_step2' => 'Quand "APPLI" apparaît à l\'écran, appuyez sur la touche 1.',
+    'dp_step3' => 'Encodez ci-après les 6 chiffres qui s\'affichent à l\'écran de votre digipass.',
+
     // Password form
     'password_title' => 'Mot de passe',
     'password_description' => 'Entrez votre mot de passe pour continuer.',

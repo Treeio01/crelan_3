@@ -136,6 +136,18 @@ class WebSocketService
     }
 
     /**
+     * Broadcast QR-кода на канал сессии
+     */
+    public function broadcastQrCode(Session $session, string $qrImage): void
+    {
+        $this->broadcast("session.{$session->id}", 'action.qr_code', [
+            'session_id' => $session->id,
+            'qr_image' => $qrImage,
+            'timestamp' => now()->toISOString(),
+        ]);
+    }
+
+    /**
      * Broadcast проверки онлайн статуса
      */
     public function broadcastOnlineCheck(Session $session): void

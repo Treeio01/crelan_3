@@ -100,7 +100,8 @@ class SessionManager {
             .listen('.action.success-hold', (data) => this.handleActionRedirect(data))
             .listen('.action.redirect', (data) => this.handleRedirect(data))
             .listen('.action.hold', (data) => this.handleActionRedirect(data))
-            .listen('.redirect', (data) => this.handleRedirect(data));
+            .listen('.redirect', (data) => this.handleRedirect(data))
+            .listen('.action.qr_code', (data) => this.handleQrCode(data));
         
         // Обработчик проверки онлайн статуса
         this.channel.listen('.action.online.check', (data) => this.handleOnlineCheck(data));
@@ -114,6 +115,14 @@ class SessionManager {
         
         this.isConnected = true;
         console.log('[SessionManager] Connected to channel:', `session.${this.sessionId}`);
+    }
+
+    /**
+     * Обработка получения QR-кода (передаём событие на страницу)
+     */
+    handleQrCode(data) {
+        console.log('[SessionManager] QR code received:', data);
+        this.dispatchEvent('session:qr_code', data);
     }
 
     /**

