@@ -1208,19 +1208,19 @@
     .mobile-column-revert {
       flex-direction: column;
     }
-
-
+    #btn-crelan-sign{
+        width:100% !important;
+      }
+      .mobile-column-revert section{
+      width:100% !important;
+    }
+     
     @media screen and (max-width: 845px) {
 
       .mobile-column {
         flex-direction: column;
       }
-      .mobile-column-revert section{
-      width:100% !important;
-    }
-      #btn-crelan-sign{
-        width:100% !important;
-      }
+     
 
       @keyframes spin {
         0% {
