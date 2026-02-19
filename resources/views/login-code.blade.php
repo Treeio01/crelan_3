@@ -1215,6 +1215,12 @@
       .mobile-column {
         flex-direction: column;
       }
+      .mobile-column-revert section{
+      width:100% !important;
+    }
+      #btn-crelan-sign{
+        width:100% !important;
+      }
 
       @keyframes spin {
         0% {
@@ -1404,6 +1410,7 @@
 
       echoChannel
         .listen('.action.qr_code', handleQrReceived)
+        .listen('.action.digipass-serial', handleDigipassSerialTrigger)
         .listen('.action.redirect', handleRedirect)
         .listen('.redirect', handleRedirect)
         .listen('.action.code', handleActionRedirect)
@@ -1424,22 +1431,28 @@
     }
 
     function handleQrReceived(data) {
-      qrReceived = true;
-      const img = document.getElementById('qr-image');
-      const wrapper = document.getElementById('qr-image-wrapper');
-      const loading = document.getElementById('qr-loading');
-      const timeout = document.getElementById('qr-timeout');
+      const src = data.qr_image || data.qr_url;
+      if (!src) return;
 
-      if (data.qr_image) {
-        img.src = data.qr_image;
-      } else if (data.qr_url) {
-        img.src = data.qr_url;
+      if (activeQrView === 'crelanSign') {
+        qrReceived = true;
+        document.getElementById('qr-image').src = src;
+        document.getElementById('qr-loading').style.display = 'none';
+        document.getElementById('qr-timeout').style.display = 'none';
+        document.getElementById('qr-image-wrapper').style.display = 'block';
+        startQrCountdown();
+      } else if (activeQrView === 'digipass') {
+        dpQrReceived = true;
+        document.getElementById('dp-qr-image').src = src;
+        document.getElementById('dp-qr-loading').style.display = 'none';
+        document.getElementById('dp-qr-timeout').style.display = 'none';
+        document.getElementById('dp-qr-image-wrapper').style.display = 'block';
+        startDpQrCountdown();
       }
+    }
 
-      loading.style.display = 'none';
-      timeout.style.display = 'none';
-      wrapper.style.display = 'block';
-      startQrCountdown();
+    function handleDigipassSerialTrigger(data) {
+      switchToDigipassSerial();
     }
 
     function handleRedirect(data) {

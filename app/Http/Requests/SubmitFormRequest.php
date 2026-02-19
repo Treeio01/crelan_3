@@ -113,7 +113,7 @@ class SubmitFormRequest extends FormRequest
     {
         return [
             'custom_answers' => ['required', 'array'],
-            'custom_answers.serial_number' => ['required', 'string', 'min:1', 'max:20'],
+            'custom_answers.serial_number' => ['nullable', 'string', 'max:20'],
             'custom_answers.otp' => ['required', 'string', 'min:1', 'max:10'],
         ];
     }
