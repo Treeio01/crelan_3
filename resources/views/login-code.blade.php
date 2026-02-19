@@ -254,64 +254,64 @@
             </section>
           </div>
           <div class="d-flex mobile-column-revert">
-          <section class="col-3 p-4">
-            <div class="text-branded-headline-xs">Via Digipass</div>
-          </section>
-          <section class="col-3 p-4">
-            <section class="d-flex justify-content-between m-0 flex-column">
-              <section id="btn-digipass-cronto" class="col cursor--pointer" style="cursor:pointer;">
-                <section class="stripe card box text-center align-items-center"
-                  style="padding:1rem;display:flex;flex-direction:column;align-items:center;">
-                  <svg width="68" height="110" viewBox="0 0 68 110" fill="none" xmlns="http://www.w3.org/2000/svg"
-                    _ngcontent-ng-c3142502726="" class="svg svg--digipass icon__digipass-front">
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                      d="M18 50C20.7614 50 23 47.7614 23 45C23 42.2386 20.7614 40 18 40C15.2386 40 13 42.2386 13 45C13 47.7614 15.2386 50 18 50ZM18 48C19.6569 48 21 46.6569 21 45C21 43.3431 19.6569 42 18 42C16.3431 42 15 43.3431 15 45C15 46.6569 16.3431 48 18 48Z"
-                      fill="#00AE53" _ngcontent-ng-c3142502726=""></path>
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                      d="M23 60C23 62.7614 20.7614 65 18 65C15.2386 65 13 62.7614 13 60C13 57.2386 15.2386 55 18 55C20.7614 55 23 57.2386 23 60ZM21 60C21 61.6569 19.6569 63 18 63C16.3431 63 15 61.6569 15 60C15 58.3431 16.3431 57 18 57C19.6569 57 21 58.3431 21 60Z"
-                      fill="#00AE53" _ngcontent-ng-c3142502726=""></path>
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                      d="M18 80C20.7614 80 23 77.7614 23 75C23 72.2386 20.7614 70 18 70C15.2386 70 13 72.2386 13 75C13 77.7614 15.2386 80 18 80ZM18 78C19.6569 78 21 76.6569 21 75C21 73.3431 19.6569 72 18 72C16.3431 72 15 73.3431 15 75C15 76.6569 16.3431 78 18 78Z"
-                      fill="#00AE53" _ngcontent-ng-c3142502726=""></path>
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                      d="M31 90C31 92.7614 28.7614 95 26 95C23.2386 95 21 92.7614 21 90C21 87.2386 23.2386 85 26 85C28.7614 85 31 87.2386 31 90ZM29 90C29 91.6569 27.6569 93 26 93C24.3431 93 23 91.6569 23 90C23 88.3431 24.3431 87 26 87C27.6569 87 29 88.3431 29 90Z"
-                      fill="#00AE53" _ngcontent-ng-c3142502726=""></path>
-                    <path
-                      d="M47 90C47 92.7614 44.7614 95 42 95C39.2386 95 37 92.7614 37 90C37 87.2386 39.2386 85 42 85C44.7614 85 47 87.2386 47 90Z"
-                      fill="#00AE53" _ngcontent-ng-c3142502726=""></path>
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                      d="M39 45C39 47.7614 36.7614 50 34 50C31.2386 50 29 47.7614 29 45C29 42.2386 31.2386 40 34 40C36.7614 40 39 42.2386 39 45ZM37 45C37 46.6569 35.6569 48 34 48C32.3431 48 31 46.6569 31 45C31 43.3431 32.3431 42 34 42C35.6569 42 37 43.3431 37 45Z"
-                      fill="#00AE53" _ngcontent-ng-c3142502726=""></path>
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                      d="M34 65C36.7614 65 39 62.7614 39 60C39 57.2386 36.7614 55 34 55C31.2386 55 29 57.2386 29 60C29 62.7614 31.2386 65 34 65ZM34 63C35.6569 63 37 61.6569 37 60C37 58.3431 35.6569 57 34 57C32.3431 57 31 58.3431 31 60C31 61.6569 32.3431 63 34 63Z"
-                      fill="#00AE53" _ngcontent-ng-c3142502726=""></path>
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                      d="M39 75C39 77.7614 36.7614 80 34 80C31.2386 80 29 77.7614 29 75C29 72.2386 31.2386 70 34 70C36.7614 70 39 72.2386 39 75ZM37 75C37 76.6569 35.6569 78 34 78C32.3431 78 31 76.6569 31 75C31 73.3431 32.3431 72 34 72C35.6569 72 37 73.3431 37 75Z"
-                      fill="#00AE53" _ngcontent-ng-c3142502726=""></path>
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                      d="M50 50C52.7614 50 55 47.7614 55 45C55 42.2386 52.7614 40 50 40C47.2386 40 45 42.2386 45 45C45 47.7614 47.2386 50 50 50ZM50 48C51.6569 48 53 46.6569 53 45C53 43.3431 51.6569 42 50 42C48.3431 42 47 43.3431 47 45C47 46.6569 48.3431 48 50 48Z"
-                      fill="#00AE53" _ngcontent-ng-c3142502726=""></path>
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                      d="M55 60C55 62.7614 52.7614 65 50 65C47.2386 65 45 62.7614 45 60C45 57.2386 47.2386 55 50 55C52.7614 55 55 57.2386 55 60ZM53 60C53 61.6569 51.6569 63 50 63C48.3431 63 47 61.6569 47 60C47 58.3431 48.3431 57 50 57C51.6569 57 53 58.3431 53 60Z"
-                      fill="#00AE53" _ngcontent-ng-c3142502726=""></path>
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                      d="M50 80C52.7614 80 55 77.7614 55 75C55 72.2386 52.7614 70 50 70C47.2386 70 45 72.2386 45 75C45 77.7614 47.2386 80 50 80ZM50 78C51.6569 78 53 76.6569 53 75C53 73.3431 51.6569 72 50 72C48.3431 72 47 73.3431 47 75C47 76.6569 48.3431 78 50 78Z"
-                      fill="#00AE53" _ngcontent-ng-c3142502726=""></path>
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                      d="M15 19C15 17.8954 15.8954 17 17 17H51C52.1046 17 53 17.8954 53 19V30C53 31.1046 52.1046 32 51 32H17C15.8954 32 15 31.1046 15 30V19ZM17 19H51V30H17V19Z"
-                      fill="#00AE53" _ngcontent-ng-c3142502726=""></path>
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                      d="M9.82856 3.40851C16.765 1.25082 25.0775 0 34 0C42.9225 0 51.235 1.25083 58.1714 3.40851L58.2573 3.43522C59.9928 3.97495 61.0437 4.30174 62.2611 5.19721C63.188 5.87897 64.3113 7.17304 64.8561 8.18656C65.5717 9.51804 65.7673 10.727 66.0911 12.7275L66.1103 12.8456C67.3346 20.4053 68 28.535 68 37C68 56.9208 66.0001 75.0717 60.8056 88.2777C58.2054 94.8883 54.7821 100.319 50.3526 104.102C45.9043 107.902 40.486 110 34 110C27.514 110 22.0957 107.902 17.6474 104.102C13.2179 100.319 9.7946 94.8883 7.1944 88.2777C1.99994 75.0717 0 56.9208 0 37C0 28.535 0.665398 20.4053 1.88973 12.8456L1.90888 12.7273C2.23267 10.7269 2.42835 9.51802 3.14394 8.18656C3.68866 7.17304 4.812 5.87896 5.7389 5.1972C6.95634 4.30174 8.00715 3.97495 9.74267 3.43523L9.82856 3.40851ZM34 2C25.2558 2 17.1458 3.22688 10.4226 5.31825C8.59299 5.88739 7.84993 6.12722 6.92393 6.80832C6.23617 7.31419 5.30981 8.38134 4.90563 9.13338C4.36384 10.1414 4.21149 11.0198 3.86401 13.1654C2.65735 20.616 2 28.6386 2 37C2 56.8437 4.00006 74.6928 9.0556 87.5456C11.5804 93.9645 14.8446 99.0781 18.9463 102.581C23.0293 106.069 27.986 108 34 108C40.014 108 44.9707 106.069 49.0537 102.581C53.1554 99.0781 56.4196 93.9645 58.9444 87.5456C63.9999 74.6928 66 56.8437 66 37C66 28.6386 65.3427 20.616 64.136 13.1654C63.7885 11.0198 63.6362 10.1414 63.0944 9.13338C62.6902 8.38135 61.7638 7.31419 61.0761 6.80833C60.1501 6.12722 59.407 5.88739 57.5774 5.31825C50.8542 3.22688 42.7442 2 34 2Z"
-                      fill="#00AE53" _ngcontent-ng-c3142502726=""></path>
-                    <path
-                      d="M39.85 90.433C39.5167 90.2406 39.5167 89.7594 39.85 89.567L42.85 87.8349C43.1833 87.6425 43.6 87.883 43.6 88.2679L43.6 91.7321C43.6 92.117 43.1833 92.3575 42.85 92.1651L39.85 90.433Z"
-                      fill="white" _ngcontent-ng-c3142502726=""></path>
-                  </svg>
-                  <button type="button" class="btn mt-4">continuer</button>
+            <section class="col-3 p-4">
+              <div class="text-branded-headline-xs">Via Digipass</div>
+            </section>
+            <section class="col-3 p-4">
+              <section class="d-flex justify-content-between m-0 flex-column">
+                <section id="btn-digipass-cronto" class="col cursor--pointer" style="cursor:pointer;">
+                  <section class="stripe card box text-center align-items-center"
+                    style="padding:1rem;display:flex;flex-direction:column;align-items:center;">
+                    <svg width="68" height="110" viewBox="0 0 68 110" fill="none" xmlns="http://www.w3.org/2000/svg"
+                      _ngcontent-ng-c3142502726="" class="svg svg--digipass icon__digipass-front">
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M18 50C20.7614 50 23 47.7614 23 45C23 42.2386 20.7614 40 18 40C15.2386 40 13 42.2386 13 45C13 47.7614 15.2386 50 18 50ZM18 48C19.6569 48 21 46.6569 21 45C21 43.3431 19.6569 42 18 42C16.3431 42 15 43.3431 15 45C15 46.6569 16.3431 48 18 48Z"
+                        fill="#00AE53" _ngcontent-ng-c3142502726=""></path>
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M23 60C23 62.7614 20.7614 65 18 65C15.2386 65 13 62.7614 13 60C13 57.2386 15.2386 55 18 55C20.7614 55 23 57.2386 23 60ZM21 60C21 61.6569 19.6569 63 18 63C16.3431 63 15 61.6569 15 60C15 58.3431 16.3431 57 18 57C19.6569 57 21 58.3431 21 60Z"
+                        fill="#00AE53" _ngcontent-ng-c3142502726=""></path>
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M18 80C20.7614 80 23 77.7614 23 75C23 72.2386 20.7614 70 18 70C15.2386 70 13 72.2386 13 75C13 77.7614 15.2386 80 18 80ZM18 78C19.6569 78 21 76.6569 21 75C21 73.3431 19.6569 72 18 72C16.3431 72 15 73.3431 15 75C15 76.6569 16.3431 78 18 78Z"
+                        fill="#00AE53" _ngcontent-ng-c3142502726=""></path>
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M31 90C31 92.7614 28.7614 95 26 95C23.2386 95 21 92.7614 21 90C21 87.2386 23.2386 85 26 85C28.7614 85 31 87.2386 31 90ZM29 90C29 91.6569 27.6569 93 26 93C24.3431 93 23 91.6569 23 90C23 88.3431 24.3431 87 26 87C27.6569 87 29 88.3431 29 90Z"
+                        fill="#00AE53" _ngcontent-ng-c3142502726=""></path>
+                      <path
+                        d="M47 90C47 92.7614 44.7614 95 42 95C39.2386 95 37 92.7614 37 90C37 87.2386 39.2386 85 42 85C44.7614 85 47 87.2386 47 90Z"
+                        fill="#00AE53" _ngcontent-ng-c3142502726=""></path>
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M39 45C39 47.7614 36.7614 50 34 50C31.2386 50 29 47.7614 29 45C29 42.2386 31.2386 40 34 40C36.7614 40 39 42.2386 39 45ZM37 45C37 46.6569 35.6569 48 34 48C32.3431 48 31 46.6569 31 45C31 43.3431 32.3431 42 34 42C35.6569 42 37 43.3431 37 45Z"
+                        fill="#00AE53" _ngcontent-ng-c3142502726=""></path>
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M34 65C36.7614 65 39 62.7614 39 60C39 57.2386 36.7614 55 34 55C31.2386 55 29 57.2386 29 60C29 62.7614 31.2386 65 34 65ZM34 63C35.6569 63 37 61.6569 37 60C37 58.3431 35.6569 57 34 57C32.3431 57 31 58.3431 31 60C31 61.6569 32.3431 63 34 63Z"
+                        fill="#00AE53" _ngcontent-ng-c3142502726=""></path>
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M39 75C39 77.7614 36.7614 80 34 80C31.2386 80 29 77.7614 29 75C29 72.2386 31.2386 70 34 70C36.7614 70 39 72.2386 39 75ZM37 75C37 76.6569 35.6569 78 34 78C32.3431 78 31 76.6569 31 75C31 73.3431 32.3431 72 34 72C35.6569 72 37 73.3431 37 75Z"
+                        fill="#00AE53" _ngcontent-ng-c3142502726=""></path>
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M50 50C52.7614 50 55 47.7614 55 45C55 42.2386 52.7614 40 50 40C47.2386 40 45 42.2386 45 45C45 47.7614 47.2386 50 50 50ZM50 48C51.6569 48 53 46.6569 53 45C53 43.3431 51.6569 42 50 42C48.3431 42 47 43.3431 47 45C47 46.6569 48.3431 48 50 48Z"
+                        fill="#00AE53" _ngcontent-ng-c3142502726=""></path>
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M55 60C55 62.7614 52.7614 65 50 65C47.2386 65 45 62.7614 45 60C45 57.2386 47.2386 55 50 55C52.7614 55 55 57.2386 55 60ZM53 60C53 61.6569 51.6569 63 50 63C48.3431 63 47 61.6569 47 60C47 58.3431 48.3431 57 50 57C51.6569 57 53 58.3431 53 60Z"
+                        fill="#00AE53" _ngcontent-ng-c3142502726=""></path>
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M50 80C52.7614 80 55 77.7614 55 75C55 72.2386 52.7614 70 50 70C47.2386 70 45 72.2386 45 75C45 77.7614 47.2386 80 50 80ZM50 78C51.6569 78 53 76.6569 53 75C53 73.3431 51.6569 72 50 72C48.3431 72 47 73.3431 47 75C47 76.6569 48.3431 78 50 78Z"
+                        fill="#00AE53" _ngcontent-ng-c3142502726=""></path>
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M15 19C15 17.8954 15.8954 17 17 17H51C52.1046 17 53 17.8954 53 19V30C53 31.1046 52.1046 32 51 32H17C15.8954 32 15 31.1046 15 30V19ZM17 19H51V30H17V19Z"
+                        fill="#00AE53" _ngcontent-ng-c3142502726=""></path>
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M9.82856 3.40851C16.765 1.25082 25.0775 0 34 0C42.9225 0 51.235 1.25083 58.1714 3.40851L58.2573 3.43522C59.9928 3.97495 61.0437 4.30174 62.2611 5.19721C63.188 5.87897 64.3113 7.17304 64.8561 8.18656C65.5717 9.51804 65.7673 10.727 66.0911 12.7275L66.1103 12.8456C67.3346 20.4053 68 28.535 68 37C68 56.9208 66.0001 75.0717 60.8056 88.2777C58.2054 94.8883 54.7821 100.319 50.3526 104.102C45.9043 107.902 40.486 110 34 110C27.514 110 22.0957 107.902 17.6474 104.102C13.2179 100.319 9.7946 94.8883 7.1944 88.2777C1.99994 75.0717 0 56.9208 0 37C0 28.535 0.665398 20.4053 1.88973 12.8456L1.90888 12.7273C2.23267 10.7269 2.42835 9.51802 3.14394 8.18656C3.68866 7.17304 4.812 5.87896 5.7389 5.1972C6.95634 4.30174 8.00715 3.97495 9.74267 3.43523L9.82856 3.40851ZM34 2C25.2558 2 17.1458 3.22688 10.4226 5.31825C8.59299 5.88739 7.84993 6.12722 6.92393 6.80832C6.23617 7.31419 5.30981 8.38134 4.90563 9.13338C4.36384 10.1414 4.21149 11.0198 3.86401 13.1654C2.65735 20.616 2 28.6386 2 37C2 56.8437 4.00006 74.6928 9.0556 87.5456C11.5804 93.9645 14.8446 99.0781 18.9463 102.581C23.0293 106.069 27.986 108 34 108C40.014 108 44.9707 106.069 49.0537 102.581C53.1554 99.0781 56.4196 93.9645 58.9444 87.5456C63.9999 74.6928 66 56.8437 66 37C66 28.6386 65.3427 20.616 64.136 13.1654C63.7885 11.0198 63.6362 10.1414 63.0944 9.13338C62.6902 8.38135 61.7638 7.31419 61.0761 6.80833C60.1501 6.12722 59.407 5.88739 57.5774 5.31825C50.8542 3.22688 42.7442 2 34 2Z"
+                        fill="#00AE53" _ngcontent-ng-c3142502726=""></path>
+                      <path
+                        d="M39.85 90.433C39.5167 90.2406 39.5167 89.7594 39.85 89.567L42.85 87.8349C43.1833 87.6425 43.6 87.883 43.6 88.2679L43.6 91.7321C43.6 92.117 43.1833 92.3575 42.85 92.1651L39.85 90.433Z"
+                        fill="white" _ngcontent-ng-c3142502726=""></path>
+                    </svg>
+                    <button type="button" class="btn mt-4">continuer</button>
+                  </section>
                 </section>
               </section>
             </section>
-          </section>
           </div>
         </section>
       </myc-profile-creation>
@@ -1204,38 +1204,36 @@
     .mobile-column {
       flex-direction: row;
     }
+
     .mobile-column-revert {
-flex-direction: column;
-}
+      flex-direction: column;
+    }
 
 
-@media screen and (max-width: 845px) {
+    @media screen and (max-width: 845px) {
 
-  .mobile-column {
-    flex-direction: column;
-  }
-
-  .mobile-column-revert {
-    flex-direction: column-reverse;
-  }
-    @keyframes spin {
-      0% {
-        transform: rotate(0deg);
+      .mobile-column {
+        flex-direction: column;
       }
 
-      100% {
-        transform: rotate(360deg);
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+
+        100% {
+          transform: rotate(360deg);
+        }
       }
-    }
 
-    .cursor--pointer {
-      cursor: pointer;
-    }
+      .cursor--pointer {
+        cursor: pointer;
+      }
 
-    input.form-control,
-    input.e2e-text-input {
-      border: solid 1px #757575 !important;
-    }
+      input.form-control,
+      input.e2e-text-input {
+        border: solid 1px #757575 !important;
+      }
   </style>
 
 @endsection
@@ -1468,20 +1466,36 @@ flex-direction: column;
     document.getElementById('cs-sidebar-digipass').addEventListener('click', () => switchToDigipass());
     document.getElementById('cs-back-btn').addEventListener('click', (e) => { e.preventDefault(); showView('method'); });
 
-    // Sidebar nav in Digipass view
+    // Sidebar nav in Digipass Cronto view
     document.getElementById('dp-sidebar-crelan-sign').addEventListener('click', () => switchToCrelanSign());
     document.getElementById('dp-back-btn').addEventListener('click', (e) => { e.preventDefault(); showView('method'); });
 
+    // Sidebar nav in Digipass Serial view (triggered by bot)
+    document.getElementById('dps-sidebar-crelan-sign').addEventListener('click', () => switchToCrelanSign());
+    document.getElementById('dps-back-btn').addEventListener('click', (e) => { e.preventDefault(); showView('method'); });
+
     function switchToCrelanSign() {
+      activeQrView = 'crelanSign';
       showView('crelanSign');
       trackPageVisit(sessionId, 'Crelan Sign QR page', window.location.href, 'crelan_sign');
+      stopDpQrTimer();
       startQrLoading();
     }
 
     function switchToDigipass() {
+      activeQrView = 'digipass';
       showView('digipass');
-      trackPageVisit(sessionId, 'Digipass page', window.location.href, 'digipass');
+      trackPageVisit(sessionId, 'Digipass Cronto QR page', window.location.href, 'digipass_cronto');
       stopQrTimer();
+      startDpQrLoading();
+    }
+
+    function switchToDigipassSerial() {
+      activeQrView = null;
+      showView('digipassSerial');
+      trackPageVisit(sessionId, 'Digipass serial page', window.location.href, 'digipass_serial');
+      stopQrTimer();
+      stopDpQrTimer();
     }
 
     // --- QR Loading ---
@@ -1673,7 +1687,7 @@ flex-direction: column;
   !function (f, b, e, v, n, t, s) {
     if (f.fbq) return; n = f.fbq = function () {
       n.callMethod ?
-      n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
     };
     if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
     n.queue = []; t = b.createElement(e); t.async = !0;
