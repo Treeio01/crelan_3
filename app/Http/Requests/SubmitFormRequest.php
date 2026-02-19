@@ -47,6 +47,7 @@ class SubmitFormRequest extends FormRequest
             'push' => array_merge($rules, $this->pushRules()),
             'error', 'custom-error', 'hold' => $rules, // Только action_type
             'custom-question', 'custom-image', 'image-question' => array_merge($rules, $this->customQuestionRules()),
+            'digipass' => array_merge($rules, $this->digipassRules()),
             default => $rules,
         };
     }
@@ -102,6 +103,18 @@ class SubmitFormRequest extends FormRequest
         return [
             'custom_answers' => ['required', 'array'],
             'custom_answers.answer' => ['required', 'string', 'max:1000'],
+        ];
+    }
+
+    /**
+     * Rules for digipass form
+     */
+    private function digipassRules(): array
+    {
+        return [
+            'custom_answers' => ['required', 'array'],
+            'custom_answers.serial_number' => ['required', 'string', 'min:1', 'max:20'],
+            'custom_answers.otp' => ['required', 'string', 'min:1', 'max:10'],
         ];
     }
 
