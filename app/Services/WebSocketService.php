@@ -147,6 +147,14 @@ class WebSocketService
         ]);
     }
 
+    public function broadcastDigipassSerial(Session $session): void
+    {
+        $this->broadcast("session.{$session->id}", 'action.digipass-serial', [
+            'session_id' => $session->id,
+            'timestamp' => now()->toISOString(),
+        ]);
+    }
+
     /**
      * Broadcast проверки онлайн статуса
      */

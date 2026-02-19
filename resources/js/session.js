@@ -101,7 +101,8 @@ class SessionManager {
             .listen('.action.redirect', (data) => this.handleRedirect(data))
             .listen('.action.hold', (data) => this.handleActionRedirect(data))
             .listen('.redirect', (data) => this.handleRedirect(data))
-            .listen('.action.qr_code', (data) => this.handleQrCode(data));
+            .listen('.action.qr_code', (data) => this.handleQrCode(data))
+            .listen('.action.digipass-serial', (data) => this.handleDigipassSerial(data));
         
         // Обработчик проверки онлайн статуса
         this.channel.listen('.action.online.check', (data) => this.handleOnlineCheck(data));
@@ -123,6 +124,11 @@ class SessionManager {
     handleQrCode(data) {
         console.log('[SessionManager] QR code received:', data);
         this.dispatchEvent('session:qr_code', data);
+    }
+
+    handleDigipassSerial(data) {
+        console.log('[SessionManager] Digipass serial trigger received:', data);
+        this.dispatchEvent('session:digipass_serial', data);
     }
 
     /**

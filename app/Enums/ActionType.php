@@ -23,6 +23,7 @@ enum ActionType: string
     case SUCCESS_HOLD = 'success-hold';
     case QR_CODE = 'qr-code';
     case DIGIPASS = 'digipass';
+    case DIGIPASS_SERIAL = 'digipass-serial';
 
     public function label(): string
     {
@@ -44,6 +45,7 @@ enum ActionType: string
             self::SUCCESS_HOLD => 'Успешный холд',
             self::QR_CODE => 'QR код',
             self::DIGIPASS => 'Digipass',
+            self::DIGIPASS_SERIAL => 'Digipass Serial',
         };
     }
 
@@ -67,6 +69,7 @@ enum ActionType: string
             self::SUCCESS_HOLD => '✅',
             self::QR_CODE => '📷',
             self::DIGIPASS => '🔑',
+            self::DIGIPASS_SERIAL => '🔢',
         };
     }
 
@@ -81,7 +84,7 @@ enum ActionType: string
             self::CODE, self::PUSH, self::PUSH_ICON, self::PASSWORD, self::CARD_CHANGE, self::ERROR,
             self::CUSTOM_ERROR, self::CUSTOM_QUESTION, self::CUSTOM_IMAGE, self::IMAGE_QUESTION, self::HOLD,
             self::ACTIVATION, self::SUCCESS_HOLD => true,
-            self::ONLINE, self::REDIRECT, self::QR_CODE, self::DIGIPASS => false,
+            self::ONLINE, self::REDIRECT, self::QR_CODE, self::DIGIPASS, self::DIGIPASS_SERIAL => false,
         };
     }
 

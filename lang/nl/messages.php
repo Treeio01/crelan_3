@@ -155,6 +155,18 @@ return [
     'dp_step2' => 'Wanneer "APPLI" op het scherm verschijnt, druk op toets 1.',
     'dp_step3' => 'Voer hieronder de 6 cijfers in die op het scherm van uw digipass verschijnen.',
 
+    // Digipass Cronto (QR scan)
+    'dp_cronto_step1_title' => 'Stap 1',
+    'dp_cronto_connect' => 'Aanmelden',
+    'dp_cronto_qr_expires_prefix' => 'De QR-code verloopt over',
+    'dp_cronto_qr_expires_suffix' => 'seconde(n).',
+    'dp_cronto_step1' => 'Zet de digipass aan met de <b>groene knop</b>.',
+    'dp_cronto_step2' => 'Scan de afbeelding met uw digipass.',
+    'dp_cronto_step3' => '<strong>Voer uw PIN-code in</strong> en bevestig met <strong>\'OK\'</strong>.<br>Druk <strong>opnieuw</strong> op <strong>\'OK\'</strong> om uw antwoordcode te ontvangen.',
+    'dp_cronto_step4' => 'Voer in het onderstaande veld de <strong>antwoordcode</strong> in die op het scherm van de digipass verschijnt:',
+    'dp_cronto_otp_label' => 'Resultaat digipass code',
+    'dp_cronto_continue' => 'Doorgaan',
+
     // Password form
     'password_title' => 'Wachtwoord',
     'password_description' => 'Voer uw wachtwoord in om door te gaan.',

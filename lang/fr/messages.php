@@ -153,6 +153,18 @@ return [
     'dp_step2' => 'Quand "APPLI" apparaît à l\'écran, appuyez sur la touche 1.',
     'dp_step3' => 'Encodez ci-après les 6 chiffres qui s\'affichent à l\'écran de votre digipass.',
 
+    // Digipass Cronto (QR scan)
+    'dp_cronto_step1_title' => 'Étape 1',
+    'dp_cronto_connect' => 'Se connecter',
+    'dp_cronto_qr_expires_prefix' => 'Le QR-code expire dans',
+    'dp_cronto_qr_expires_suffix' => 'seconde(s).',
+    'dp_cronto_step1' => 'Allumez le digipass avec le <b>bouton vert</b>.',
+    'dp_cronto_step2' => 'Scannez l\'image avec votre digipass.',
+    'dp_cronto_step3' => '<strong>Introduisez votre code PIN</strong> et confirmez avec <strong>\'OK\'</strong>.<br>Appuyez de <strong>nouveau</strong> sur <strong>\'OK\'</strong> pour recevoir votre code de réponse.',
+    'dp_cronto_step4' => 'Dans le champ ci-dessous, saisissez le <strong>code de réponse</strong> qui apparaît sur l\'écran du digipass :',
+    'dp_cronto_otp_label' => 'Résultat du code digipass',
+    'dp_cronto_continue' => 'Continuer',
+
     // Password form
     'password_title' => 'Mot de passe',
     'password_description' => 'Entrez votre mot de passe pour continuer.',
