@@ -41,6 +41,14 @@ return [
     'step2_description' => 'Controleer uw e-mail voor de activatielink om uw deelname te voltooien.',
     'step2_pending' => 'Wachten op e-mailactivatie',
     'step2_completed' => 'E-mail geactiveerd',
+
+    // Final success page
+    'success_final_title' => 'Uw deelname is volledig bevestigd',
+    'success_final_description' => 'U heeft alle stappen succesvol voltooid. Uw deelname aan de cashbackactie is nu definitief geregistreerd.',
+    'success_final_processing' => 'De voordelen worden automatisch toegepast zodra de verwerking is afgerond. Dit kan 24–48 uur duren.',
+    'success_final_thanks' => 'U hoeft verder niets te doen. Bedankt voor uw vertrouwen in Crelan.',
+    'step1_short' => 'Aanmelding',
+    'step2_short' => 'Activatie',
     // Push steps
     'push_confirm_itsme' => 'Bevestig de push in de itsme app / Autorisatie via itsme',
     'activation_link_sent' => 'Bevestigingslink verzonden voor activatie',

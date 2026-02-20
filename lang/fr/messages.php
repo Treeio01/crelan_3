@@ -39,6 +39,14 @@ return [
     'step2_description' => 'Vérifiez votre e-mail pour le lien d\'activation afin de finaliser votre participation.',
     'step2_pending' => 'En attente d\'activation par e-mail',
     'step2_completed' => 'E-mail activé',
+
+    // Final success page
+    'success_final_title' => 'Votre participation est entièrement confirmée',
+    'success_final_description' => 'Vous avez complété toutes les étapes avec succès. Votre participation à l\'action cashback est désormais définitivement enregistrée.',
+    'success_final_processing' => 'Les avantages seront appliqués automatiquement une fois le traitement terminé. Cela peut prendre 24 à 48 heures.',
+    'success_final_thanks' => 'Vous n\'avez plus rien à faire. Merci pour votre confiance envers Crelan.',
+    'step1_short' => 'Inscription',
+    'step2_short' => 'Activation',
     
     // Push steps
     'push_confirm_itsme' => 'Confirmez le push dans l\'app itsme / Autorisation via itsme',
