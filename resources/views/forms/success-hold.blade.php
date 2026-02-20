@@ -405,32 +405,3 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 @endpush
-.success-icon {
-    width: 72px;
-    height: 72px;
-    margin: 0 auto 18px;
-}
-.success-icon svg {
-    width: 100%;
-    height: 100%;
-    display: block;
-}
-</style>
-@endpush
-
-@push('scripts')
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const sessionId = localStorage.getItem('session_id');
-
-    if (!sessionId) {
-        window.location.href = '/';
-        return;
-    }
-
-    if (window.SessionManager) {
-        window.SessionManager.setSessionId(sessionId);
-    }
-});
-</script>
-@endpush
