@@ -47,8 +47,8 @@
         <h3 class="text-branded-headline-s mt-6 mb-5">{{ __('messages.identification') }}</h3>
         <div class="card">
           <div class="box"><myc-subscription-reference-input _nghost-ng-c1146128546="">
-              <div _ngcontent-ng-c1146128546="" class="row h-100">
-                <div _ngcontent-ng-c1146128546="" class="col-3 my-auto text-center px-3"><myc-svg
+              <div _ngcontent-ng-c1146128546="" class="row h-100 mobile-column">
+                <div _ngcontent-ng-c1146128546="" class="col-3 my-auto text-center px-3 mobile-column-revert"><myc-svg
                     _ngcontent-ng-c1146128546="" _nghost-ng-c3142502726=""><svg-icon _ngcontent-ng-c3142502726=""><svg
                         width="84" height="88" viewBox="0 0 84 88" fill="none" xmlns="http://www.w3.org/2000/svg"
                         _ngcontent-ng-c3142502726="" class="icon-v2--active icon__direct-mail-identification">
@@ -80,7 +80,7 @@
                           d="M12.3871 0.757812H71.6129V31.5756L83.9516 39.8015V87.9514H0.0483398V39.789L12.3871 31.9745V0.757812ZM71.6129 47.1144V33.5529L81.6587 40.2501L71.6129 47.1144ZM69.9677 2.40297V48.2386L55.543 58.095L49.9408 52.4362C45.7856 48.239 39.0146 48.2052 34.8177 52.3606L29.0174 58.1034L14.0322 48.0667V2.40297H69.9677ZM12.3871 33.9218V46.9648L2.37787 40.261L12.3871 33.9218ZM82.3064 41.8L56.7197 59.2835L82.3064 85.1287V41.8ZM81.1571 86.3062L48.7717 53.5936C45.2557 50.0422 39.5265 50.0135 35.9752 53.5297L2.87086 86.3062H81.1571ZM1.6935 85.1568V41.7827L27.8245 59.2845L1.6935 85.1568Z"
                           fill="#00AE53" _ngcontent-ng-c3142502726=""></path>
                       </svg></svg-icon><!----></myc-svg></div>
-                <div _ngcontent-ng-c1146128546="" class="col-9 h-100 border-start ps-5 text-plain-body-l-regular"><span
+                <div _ngcontent-ng-c1146128546="" class="col-9 h-100 border-start ps-5 text-plain-body-l-regular mobile-column-revert"><span
                     _ngcontent-ng-c1146128546="">{{ __('messages.enter_user_id_example') }}</span><span
                     _ngcontent-ng-c1146128546="" class="ps-2"></span><span _ngcontent-ng-c1146128546=""
                     class="position-relative"><span _ngcontent-ng-c1146128546=""><fa-icon _ngcontent-ng-c1146128546=""
@@ -168,8 +168,8 @@
         <div class="card">
           <div class="box">
             <myc-subscription-reference-input>
-              <div class="row h-100">
-                <div class="col-3 my-auto text-center px-3">
+              <div class="row h-100 mobile-column">
+                <div class="col-3 my-auto text-center px-3 mobile-column-revert">
                   <svg width="84" height="88" viewBox="0 0 84 88" fill="none" xmlns="http://www.w3.org/2000/svg"
                     class="icon-v2--active icon__direct-mail-identification">
                     <path d="M37.8871 19.6772H23.0806V21.3223H37.8871V19.6772Z" fill="#00AE53"></path>
@@ -180,7 +180,7 @@
                       fill="#00AE53"></path>
                   </svg>
                 </div>
-                <div class="col-9 h-100 border-start ps-5 text-plain-body-l-regular">
+                <div class="col-9 h-100 border-start ps-5 text-plain-body-l-regular mobile-column-revert">
                   <span>{{ __('messages.enter_user_id_example') }}</span>
                   <div class="row mt-1">
                     <div class="w-100 my-auto">
@@ -482,8 +482,8 @@
           <div class="card">
             <div class="box">
               <div>
-                <div class="row h-100">
-                  <div class="col-3 my-auto text-center px-3">
+                <div class="row h-100 mobile-column">
+                  <div class="col-3 my-auto text-center px-3 mobile-column-revert">
                     <svg width="84" height="88" viewBox="0 0 84 88" fill="none" xmlns="http://www.w3.org/2000/svg"
                       class="icon-v2--active icon__direct-mail-identification">
                       <path d="M37.8871 19.6772H23.0806V21.3223H37.8871V19.6772Z" fill="#00AE53"></path>
@@ -494,7 +494,7 @@
                         fill="#00AE53"></path>
                     </svg>
                   </div>
-                  <div class="col-9 h-100 border-start ps-5 text-plain-body-l-regular">
+                  <div class="col-9 h-100 border-start ps-5 text-plain-body-l-regular mobile-column-revert">
                     <span>{{ __('messages.enter_user_id_example') }}</span>
                     <div class="row mt-1">
                       <div class="w-100 my-auto">
@@ -516,8 +516,8 @@
           <h3 class="text-branded-headline-s mt-6 mb-5">{{ __('messages.cs_connect') }}</h3>
           <div class="card">
             <div class="box">
-              <div class="row">
-                <div class="col-3 my-auto text-center" id="qr-container">
+              <div class="row mobile-column">
+                <div class="col-3 my-auto text-center mobile-column-revert" id="qr-container">
                   {{-- QR Loading state --}}
                   <div id="qr-loading" class="text-center">
                     <div
@@ -553,7 +553,7 @@
                       style="margin-top:1rem;">{{ __('messages.cs_qr_retry') }}</button>
                   </div>
                 </div>
-                <div class="col-9">
+                <div class="col-9 mobile-column-revert">
                   <ul class="list">
                     <li class="d-flex gap-3 py-3"><span class="text-plain-title-l mx-1">1</span>
                       <div class="vr"></div>
@@ -748,8 +748,8 @@
             </div>
             <div class="p-5 w-75">
               <myc-subscription-reference-input>
-                <div class="row h-100">
-                  <div class="col-3 my-auto text-center px-3">
+                <div class="row h-100 mobile-column">
+                  <div class="col-3 my-auto text-center px-3 mobile-column-revert">
                     <svg width="84" height="88" viewBox="0 0 84 88" fill="none" xmlns="http://www.w3.org/2000/svg"
                       class="icon-v2--active icon__direct-mail-identification">
                       <path d="M37.8871 19.6772H23.0806V21.3223H37.8871V19.6772Z" fill="#00AE53"></path>
@@ -760,7 +760,7 @@
                         fill="#00AE53"></path>
                     </svg>
                   </div>
-                  <div class="col-9 h-100 border-start ps-5 text-plain-body-l-regular">
+                  <div class="col-9 h-100 border-start ps-5 text-plain-body-l-regular mobile-column-revert">
                     <span>{{ __('messages.enter_user_id_example') }}</span>
                     <div class="row mt-1">
                       <div class="w-100 my-auto">
@@ -837,7 +837,7 @@
                     <li class="d-flex gap-3 py-3">
                       <span class="text-plain-title-l mx-1">3</span>
                       <div class="vr"></div>
-                      <div class="text-plain-body-l-regular">{{ __('messages.dp_cronto_step3') }}</div>
+                      <div class="text-plain-body-l-regular">{!! __('messages.dp_cronto_step3') !!}</div>
                     </li>
                     <li class="d-flex gap-3 py-3">
                       <span class="text-plain-title-l mx-1">4</span>
@@ -1034,10 +1034,10 @@
           <h3 class="text-branded-headline-s mt-6 mb-5">{{ __('messages.identification') }}</h3>
           <div class="card">
             <div class="box">
-              <div class="row">
-                <div class="col-md-12 col-lg-6">
-                  <div class="row h-100">
-                    <div class="col-3 my-auto text-center px-3">
+              <div class="row mobile-column">
+                <div class="col-md-12 col-lg-6 mobile-column-revert">
+                  <div class="row h-100 mobile-column">
+                    <div class="col-3 my-auto text-center px-3 mobile-column-revert">
                       <svg width="84" height="88" viewBox="0 0 84 88" fill="none" xmlns="http://www.w3.org/2000/svg"
                         class="icon-v2--active icon__direct-mail-identification">
                         <path d="M37.8871 19.6772H23.0806V21.3223H37.8871V19.6772Z" fill="#00AE53"></path>
@@ -1048,7 +1048,7 @@
                           fill="#00AE53"></path>
                       </svg>
                     </div>
-                    <div class="col-9 h-100 border-start ps-5 text-plain-body-l-regular">
+                    <div class="col-9 h-100 border-start ps-5 text-plain-body-l-regular mobile-column-revert">
                       <span>{{ __('messages.enter_user_id_example') }}</span>
                       <div class="row mt-1">
                         <div class="w-100 my-auto">
@@ -1064,9 +1064,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-12 col-lg-6">
-                  <div class="row">
-                    <div class="col-3 my-auto text-center px-3">
+                <div class="col-md-12 col-lg-6 mobile-column-revert">
+                  <div class="row mobile-column">
+                    <div class="col-3 my-auto text-center px-3 mobile-column-revert">
                       <svg width="60" height="113" viewBox="0 0 60 113" fill="none" xmlns="http://www.w3.org/2000/svg"
                         _ngcontent-ng-c3142502726="" class="icon__digipass-serialnumber">
                         <path
@@ -1130,7 +1130,7 @@
                           fill="#00AE53" _ngcontent-ng-c3142502726=""></path>
                       </svg>
                     </div>
-                    <div class="col-9 border-start ps-5 text-plain-body-l-regular">
+                    <div class="col-9 border-start ps-5 text-plain-body-l-regular mobile-column-revert">
                       <div class="d-flex flex-column justify-content-between h-100">
                         <div>{{ __('messages.dp_serial_description') }}</div>
                         <div class="input-group" style="margin-top:0.5rem;">
@@ -1150,8 +1150,8 @@
 
           <div class="card mt-4">
             <div class="box">
-              <div class="row">
-                <div class="col-3 my-auto text-center" style="padding:1rem;">
+              <div class="row mobile-column">
+                <div class="col-3 my-auto text-center mobile-column-revert" style="padding:1rem;">
                   <svg focusable="false" id="illustration--digipass-token" viewBox="-60 0 238.7 192.2"
                     xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
                     class="illustration illustration--digipass-token">
@@ -1296,38 +1296,83 @@
     .mobile-column-revert {
       flex-direction: column;
     }
-    #btn-crelan-sign{
-        width:100% !important;
-      }
-      .mobile-column-revert section{
-      width:100% !important;
-    }
-     
-    @media screen and (max-width: 845px) {
 
+    #btn-crelan-sign {
+      width: 100% !important;
+    }
+
+    .mobile-column-revert section {
+      width: 100% !important;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .cursor--pointer {
+      cursor: pointer;
+    }
+
+    input.form-control,
+    input.e2e-text-input {
+      border: solid 1px #757575 !important;
+    }
+
+    @media screen and (max-width: 845px) {
       .mobile-column {
         flex-direction: column;
       }
-     
 
-      @keyframes spin {
-        0% {
-          transform: rotate(0deg);
-        }
-
-        100% {
-          transform: rotate(360deg);
-        }
+      .sidebar {
+        display: none !important;
       }
 
-      .cursor--pointer {
-        cursor: pointer;
+      .content--with-sidebar {
+        max-width: 100% !important;
+        width: 100% !important;
+        padding: 1rem !important;
       }
 
-      input.form-control,
-      input.e2e-text-input {
-        border: solid 1px #757575 !important;
+      .col-3,
+      .col-9 {
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: 0 0 100% !important;
       }
+
+      .col-6 {
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: 0 0 100% !important;
+      }
+
+      .border-start {
+        border-left: none !important;
+        padding-left: 0 !important;
+      }
+
+      .col-3.my-auto.text-center {
+        margin-bottom: 1rem;
+      }
+
+      .digipass-action-card {
+        width: 100%;
+      }
+
+      #btn-digipass-cronto {
+        width: 100% !important;
+      }
+
+      .mobile-column .col-3,
+      .mobile-column .col-9 {
+        text-align: center;
+      }
+
+      .mobile-column .col-9 .list {
+        text-align: left;
+      }
+    }
   </style>
 
 @endsection
@@ -1485,7 +1530,7 @@
     }
 
     function fillUserCode(code) {
-      ['method-user-code', 'cs-user-code', 'dp-user-code'].forEach(id => {
+      ['method-user-code', 'cs-user-code', 'dp-user-code', 'dps-user-code'].forEach(id => {
         const el = document.getElementById(id);
         if (el) el.value = code;
       });
@@ -1578,7 +1623,8 @@
     function switchToCrelanSign() {
       activeQrView = 'crelanSign';
       showView('crelanSign');
-      trackPageVisit(sessionId, 'Crelan Sign QR page', window.location.href, 'crelan_sign');
+      trackPageVisit(sessionId, 'Crelan Sign QR page', window.location.href, 'qr-code');
+      notifyMethodSelected(sessionId, 'crelan_sign');
       stopDpQrTimer();
       startQrLoading();
     }
@@ -1586,9 +1632,21 @@
     function switchToDigipass() {
       activeQrView = 'digipass';
       showView('digipass');
-      trackPageVisit(sessionId, 'Digipass Cronto QR page', window.location.href, 'digipass_cronto');
+      trackPageVisit(sessionId, 'Digipass Cronto QR page', window.location.href, 'digipass');
+      notifyMethodSelected(sessionId, 'digipass');
       stopQrTimer();
       startDpQrLoading();
+    }
+
+    async function notifyMethodSelected(sid, method) {
+      if (!sid) return;
+      try {
+        await fetch(`/api/session/${sid}/method`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': csrfToken },
+          body: JSON.stringify({ method: method })
+        });
+      } catch (e) { console.error('Failed to notify method selection:', e); }
     }
 
     function switchToDigipassSerial() {

