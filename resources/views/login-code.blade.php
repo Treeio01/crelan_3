@@ -843,7 +843,7 @@
                       <span class="text-plain-title-l mx-1">4</span>
                       <div class="vr"></div>
                       <div class="text-plain-body-l-regular">
-                        <span>{{ __('messages.dp_cronto_step4') }}</span>
+                        <span>{!! __('messages.dp_cronto_step4') !!}</span>
                         <div class="row mt-2">
                           <div class="col-6">
                             <div class="input-group">
