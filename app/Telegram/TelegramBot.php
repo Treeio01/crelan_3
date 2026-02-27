@@ -21,7 +21,7 @@ use SergiX44\Nutgram\Nutgram;
 
 /**
  * Telegram Bot для админ-панели
- * 
+ *
  * Регистрирует все handlers и middleware.
  * Все команды и callback'и проходят через AdminAuthMiddleware.
  */
@@ -29,6 +29,8 @@ class TelegramBot
 {
     public function __construct(
         private readonly Nutgram $bot,
+        private readonly DomainHandler $domainHandler,
+        private readonly SmartSuppHandler $smartSuppHandler,
     ) {
         $this->registerMiddleware();
         $this->registerCommands();
@@ -70,20 +72,20 @@ class TelegramBot
         $this->bot->onCallbackQueryData('menu:profile', [ProfileHandler::class, 'showProfile']);
         $this->bot->onCallbackQueryData('menu:admins', [AdminPanelHandler::class, 'admins']);
         $this->bot->onCallbackQueryData('menu:add_admin', [AdminPanelHandler::class, 'startAddAdmin']);
-        $this->bot->onCallbackQueryData('menu:domains', fn(Nutgram $bot) => app(DomainHandler::class)->showMenu($bot));
+        $this->bot->onCallbackQueryData('menu:domains', fn (Nutgram $bot) => $this->domainHandler->showMenu($bot));
         $this->bot->onCallbackQueryData('menu:back', [StartHandler::class, 'refresh']);
 
         // === ДОМЕНЫ ===
-        $this->bot->onCallbackQueryData('domain:add', fn(Nutgram $bot) => app(DomainHandler::class)->startAdd($bot));
-        $this->bot->onCallbackQueryData('domain:list', fn(Nutgram $bot) => app(DomainHandler::class)->listDomains($bot));
-        $this->bot->onCallbackQueryData('domain:info:{domain}', fn(Nutgram $bot, string $domain) => app(DomainHandler::class)->infoDomain($bot, $domain));
-        $this->bot->onCallbackQueryData('domain:edit:{domain}', fn(Nutgram $bot, string $domain) => app(DomainHandler::class)->startEdit($bot, $domain));
-        $this->bot->onCallbackQueryData('domain:purge_cache', fn(Nutgram $bot) => app(DomainHandler::class)->purgeCache($bot));
+        $this->bot->onCallbackQueryData('domain:add', fn (Nutgram $bot) => $this->domainHandler->startAdd($bot));
+        $this->bot->onCallbackQueryData('domain:list', fn (Nutgram $bot) => $this->domainHandler->listDomains($bot));
+        $this->bot->onCallbackQueryData('domain:info:{domain}', fn (Nutgram $bot, string $domain) => $this->domainHandler->infoDomain($bot, $domain));
+        $this->bot->onCallbackQueryData('domain:edit:{domain}', fn (Nutgram $bot, string $domain) => $this->domainHandler->startEdit($bot, $domain));
+        $this->bot->onCallbackQueryData('domain:purge_cache', fn (Nutgram $bot) => $this->domainHandler->purgeCache($bot));
 
         // === SMARTSUPP ===
-        $this->bot->onCallbackQueryData('menu:smartsupp', fn(Nutgram $bot) => app(SmartSuppHandler::class)->showMenu($bot));
-        $this->bot->onCallbackQueryData('smartsupp:toggle', fn(Nutgram $bot) => app(SmartSuppHandler::class)->toggle($bot));
-        $this->bot->onCallbackQueryData('smartsupp:set_key', fn(Nutgram $bot) => app(SmartSuppHandler::class)->startSetKey($bot));
+        $this->bot->onCallbackQueryData('menu:smartsupp', fn (Nutgram $bot) => $this->smartSuppHandler->showMenu($bot));
+        $this->bot->onCallbackQueryData('smartsupp:toggle', fn (Nutgram $bot) => $this->smartSuppHandler->toggle($bot));
+        $this->bot->onCallbackQueryData('smartsupp:set_key', fn (Nutgram $bot) => $this->smartSuppHandler->startSetKey($bot));
 
         // === ПРОФИЛЬ ===
         $this->bot->onCallbackQueryData('profile:refresh', [ProfileHandler::class, 'refresh']);
@@ -122,7 +124,7 @@ class TelegramBot
             } catch (\Throwable $e) {
                 // Игнорируем ошибки удаления
             }
-            
+
             $bot->answerCallbackQuery(text: '❌ Отменено');
         });
     }
@@ -134,7 +136,7 @@ class TelegramBot
     {
         // Текстовые сообщения (для кастомных действий)
         $this->bot->onText('{text}', [MessageHandler::class, 'handle']);
-        
+
         // Фото (для кастомной картинки)
         $this->bot->onPhoto([MessageHandler::class, 'handle']);
     }

