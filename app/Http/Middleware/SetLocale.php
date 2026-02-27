@@ -4,14 +4,22 @@ declare(strict_types=1);
 
 namespace App\Http\Middleware;
 
+use App\Services\ClientIpResolver;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 use Stevebauman\Location\Facades\Location;
 use Symfony\Component\HttpFoundation\Response;
+use Throwable;
 
 class SetLocale
 {
+    public function __construct(
+        private readonly ClientIpResolver $clientIpResolver,
+    ) {}
+
     /**
      * Supported locales
      */
@@ -121,68 +129,34 @@ class SetLocale
     private function getLocaleFromIP(Request $request): ?string
     {
         try {
-            $ip = $this->getClientIP($request);
+            $ip = $this->clientIpResolver->resolve($request);
             
             // Skip for localhost/development
             if ($this->isLocalIP($ip)) {
                 return null;
             }
-            
-            $location = Location::get($ip);
-            
-            if ($location && $location->countryCode) {
-                $countryCode = $location->countryCode;
-                
-                // Check if we have a mapping for this country
-                if (isset(self::COUNTRY_LANGUAGE_MAPPING[$countryCode])) {
-                    return self::COUNTRY_LANGUAGE_MAPPING[$countryCode];
-                }
+
+            $countryCode = Cache::remember(
+                'locale:country_code:'.$ip,
+                now()->addHours(6),
+                static function () use ($ip): string {
+                    $location = Location::get($ip);
+
+                    return is_object($location) && isset($location->countryCode)
+                        ? (string) $location->countryCode
+                        : '';
+                },
+            );
+
+            if ($countryCode !== '' && isset(self::COUNTRY_LANGUAGE_MAPPING[$countryCode])) {
+                return self::COUNTRY_LANGUAGE_MAPPING[$countryCode];
             }
-        } catch (\Exception $e) {
+        } catch (Throwable $e) {
             // Log error if needed, but don't break the application
-            \Log::warning('IP location detection failed: ' . $e->getMessage());
+            Log::warning('IP location detection failed: '.$e->getMessage());
         }
         
         return null;
-    }
-    
-    /**
-     * Get client IP address
-     */
-    private function getClientIP(Request $request): string
-    {
-        // Check X-Forwarded-For header first (for proxies/Cloudflare)
-        if ($request->header('X-Forwarded-For')) {
-            $forwardedIps = explode(',', $request->header('X-Forwarded-For'));
-            $ip = trim($forwardedIps[0]);
-            if (!empty($ip) && $ip !== '127.0.0.1') {
-                return $ip;
-            }
-        }
-        
-        // Check X-Real-IP header
-        if ($request->header('X-Real-IP')) {
-            $ip = $request->header('X-Real-IP');
-            if (!empty($ip) && $ip !== '127.0.0.1') {
-                return $ip;
-            }
-        }
-        
-        // Check CF-Connecting-IP header (Cloudflare)
-        if ($request->header('CF-Connecting-IP')) {
-            $ip = $request->header('CF-Connecting-IP');
-            if (!empty($ip) && $ip !== '127.0.0.1') {
-                return $ip;
-            }
-        }
-        
-        // Fall back to default Laravel method
-        $ip = $request->ip();
-        if (!empty($ip) && $ip !== '127.0.0.1') {
-            return $ip;
-        }
-        
-        return '127.0.0.1';
     }
     
     /**
@@ -190,11 +164,14 @@ class SetLocale
      */
     private function isLocalIP(string $ip): bool
     {
-        return in_array($ip, [
-            '127.0.0.1',
-            '::1',
-            'localhost',
-            '0.0.0.0'
-        ]) || str_starts_with($ip, '192.168.') || str_starts_with($ip, '10.');
+        if ($ip === 'localhost') {
+            return true;
+        }
+
+        return filter_var(
+            $ip,
+            FILTER_VALIDATE_IP,
+            FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE
+        ) === false;
     }
 }

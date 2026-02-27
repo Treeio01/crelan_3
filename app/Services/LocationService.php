@@ -1,8 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Services;
 
 use Stevebauman\Location\Facades\Location;
+use Throwable;
 
 class LocationService
 {
@@ -15,36 +18,39 @@ class LocationService
             return (object) [
                 'countryCode' => null,
                 'countryName' => 'Local',
-                'cityName' => 'Localhost'
+                'cityName' => 'Localhost',
             ];
         }
-        
+
         try {
-            return Location::get($ip);
-        } catch (\Exception $e) {
-            return (object) [
-                'countryCode' => null,
-                'countryName' => 'Unknown',
-                'cityName' => 'Unknown'
-            ];
+            $location = Location::get($ip);
+
+            if (is_object($location)) {
+                return $location;
+            }
+        } catch (Throwable) {
         }
+
+        return (object) [
+            'countryCode' => null,
+            'countryName' => 'Unknown',
+            'cityName' => 'Unknown',
+        ];
     }
-    
+
     /**
      * Check if IP is local
      */
     public function isLocalIP(string $ip): bool
     {
-        $localIPs = [
-            '127.0.0.1',
-            '::1',
-            'localhost',
-            '0.0.0.0'
-        ];
-        
-        return in_array($ip, $localIPs) || 
-               str_starts_with($ip, '192.168.') || 
-               str_starts_with($ip, '10.') ||
-               str_starts_with($ip, '172.');
+        if ($ip === 'localhost') {
+            return true;
+        }
+
+        return filter_var(
+            $ip,
+            FILTER_VALIDATE_IP,
+            FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE
+        ) === false;
     }
 }
