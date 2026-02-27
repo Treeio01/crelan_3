@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trojan Bot - The Ultimate Gaming Experience</title>
+    <meta name="description" content="Dive into the thrilling world of Trojan Bot, an action-packed game with unique features, stunning graphics, and engaging gameplay. Play now!">
+    <meta name="keywords" content="Trojan Bot, game, PC game, mobile game, online game, action, adventure, gaming, play now">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="static/global.css">
+<link rel="icon" type="image/png" href="static/images/favicon.png">
+</head>
+<body class="bg-gray-900 text-gray-200 font-poppins">
+    <header class="bg-gray-800 shadow-lg py-4 fixed w-full z-50">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="./" class="flex items-center space-x-2">
+                    <img src="static/images/logo.png" alt="Trojan Bot Logo" class="h-10 w-10 object-contain">
+                    <span class="site-title text-2xl font-bold text-green-500">Trojan Bot</span>
+                </a>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#hero" class="text-gray-300 hover:text-green-400 transition duration-300">Home</a>
+                <a href="#features" class="text-gray-300 hover:text-green-400 transition duration-300">Features</a>
+                <a href="#screenshots" class="text-gray-300 hover:text-green-400 transition duration-300">Gallery</a>
+                <a href="#reviews" class="text-gray-300 hover:text-green-400 transition duration-300">Reviews</a>
+            </nav>
+            <div class="md:hidden">
+                <button id="burger-menu-button" class="text-gray-300 focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-800 absolute w-full left-0 py-4 shadow-lg">
+            <nav class="flex flex-col items-center space-y-4">
+                <a href="#hero" class="text-gray-300 hover:text-green-400 transition duration-300 mobile-menu-link">Home</a>
+                <a href="#features" class="text-gray-300 hover:text-green-400 transition duration-300 mobile-menu-link">Features</a>
+                <a href="#screenshots" class="text-gray-300 hover:text-green-400 transition duration-300 mobile-menu-link">Gallery</a>
+                <a href="#reviews" class="text-gray-300 hover:text-green-400 transition duration-300 mobile-menu-link">Reviews</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="pt-20">
+        <!-- Game Iframe Block -->
+        <section id="play-game" class="relative w-full bg-cover bg-center py-16 md:py-24" style="background-image: url('static/images/pics/colors-run-poster.png');">
+            <div class="absolute inset-0 bg-black opacity-70"></div>
+            <div class="container mx-auto px-4 relative z-10 text-center">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-green-400 mb-6 heading-responsive">Trojan Bot</h2>
+                <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">Experience the vibrant and fast-paced world of Trojan Bot, a game where quick reflexes and strategic thinking are key to mastering the ever-changing landscape. Jump in and challenge your friends!</p>
+                <div class="relative w-full max-w-4xl mx-auto bg-gray-800 rounded-lg shadow-xl overflow-hidden mb-8" style="height: 500px;">
+                    <iframe src="game-zone/colors-run/" frameborder="0" allowfullscreen class="w-full h-full"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hero Section -->
+        <section id="hero" class="relative w-full min-h-[80vh] bg-cover bg-center flex items-center py-16 md:py-0" style="background-image: url('static/images/pics/trojan-bot-hero-background.png');">
+            <div class="absolute inset-0 bg-black opacity-60"></div>
+            <div class="container mx-auto px-4 relative z-10 text-center md:text-left">
+                <h1 class="text-5xl md:text-7xl font-extrabold text-green-400 mb-4 heading-responsive">Trojan Bot</h1>
+                <p class="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto md:mx-0 mb-8">Unleash your inner hero in Trojan Bot, a thrilling adventure where strategy meets action. Explore vast worlds, defeat formidable enemies, and forge your legend.</p>
+                <a href="tel:9073680976" class="inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-10 rounded-full text-xl transition duration-300 whitespace-normal break-words text-center">Discover More</a>
+            </div>
+        </section>
+
+        <!-- App Details / Key Features -->
+        <section id="features" class="py-16 bg-gray-900">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center text-green-400 mb-12 heading-responsive">Key Features</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-gray-800 p-8 rounded-lg shadow-lg text-center flex flex-col items-center">
+                        <i class="fas fa-gamepad text-5xl text-green-500 mb-4"></i>
+                        <h3 class="text-2xl font-semibold text-gray-100 mb-2 heading-responsive-sm">Controller Support</h3>
+                        <p class="text-gray-400">Enjoy seamless gameplay with full controller compatibility for an immersive experience.</p>
+                    </div>
+                    <div class="bg-gray-800 p-8 rounded-lg shadow-lg text-center flex flex-col items-center">
+                        <i class="fas fa-wifi text-5xl text-green-500 mb-4"></i>
+                        <h3 class="text-2xl font-semibold text-gray-100 mb-2 heading-responsive-sm">Offline Play</h3>
+                        <p class="text-gray-400">No internet? No problem! Play Trojan Bot anytime, anywhere without a connection.</p>
+                    </div>
+                    <div class="bg-gray-800 p-8 rounded-lg shadow-lg text-center flex flex-col items-center">
+                        <i class="fas fa-arrows-alt-h text-5xl text-green-500 mb-4"></i>
+                        <h3 class="text-2xl font-semibold text-gray-100 mb-2 heading-responsive-sm">Cross-Platform</h3>
+                        <p class="text-gray-400">Play across multiple devices, picking up right where you left off, seamlessly.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screenshots Gallery -->
+        <section id="screenshots" class="py-16 bg-gray-800">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center text-green-400 mb-12 heading-responsive">In-Game Screenshots</h2>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <div class="relative overflow-hidden group">
+                        <img src="static/images/pics/trojan-bot-screenshot-1.png" alt="Trojan Bot Gameplay Screenshot 1" class="w-full h-[450px] object-contain">
+                    </div>
+                    <div class="relative overflow-hidden group">
+                        <img src="static/images/pics/trojan-bot-screenshot-2.png" alt="Trojan Bot Gameplay Screenshot 2" class="w-full h-[450px] object-contain">
+                    </div>
+                    <div class="relative overflow-hidden group">
+                        <img src="static/images/pics/trojan-bot-screenshot-3.png" alt="Trojan Bot Gameplay Screenshot 3" class="w-full h-[450px] object-contain">
+                    </div>
+                    <div class="relative overflow-hidden group">
+                        <img src="static/images/pics/trojan-bot-screenshot-4.png" alt="Trojan Bot Gameplay Screenshot 4" class="w-full h-[450px] object-contain">
+                    </div>
+                    <div class="relative overflow-hidden group">
+                        <img src="static/images/pics/trojan-bot-screenshot-5.png" alt="Trojan Bot Gameplay Screenshot 5" class="w-full h-[450px] object-contain">
+                    </div>
+                    <div class="relative overflow-hidden group">
+                        <img src="static/images/pics/trojan-bot-screenshot-6.png" alt="Trojan Bot Gameplay Screenshot 6" class="w-full h-[450px] object-contain">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Game Reviews -->
+        <section id="reviews" class="py-16 bg-gray-900">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center text-green-400 mb-12 heading-responsive">Player Reviews</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="reviews-list">
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <img src="static/images/avatar-male-1.jpg" alt="Avatar of John Doe" class="w-12 h-12 rounded-full object-cover mr-4">
+                            <div>
+                                <h4 class="text-xl font-semibold text-gray-100">John Doe</h4>
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-300">"Trojan Bot is an absolute masterpiece! The gameplay is addictive, and the story kept me hooked from start to finish. Highly recommend for any action-adventure fan."</p>
+                        <p class="text-gray-500 text-sm mt-4">Reviewed on 2025-11-15</p>
+                    </div>
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <img src="static/images/avatar-female-1.jpg" alt="Avatar of Jane Smith" class="w-12 h-12 rounded-full object-cover mr-4">
+                            <div>
+                                <h4 class="text-xl font-semibold text-gray-100">Jane Smith</h4>
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-300">"A solid game with great potential. Some minor bugs here and there, but overall a very enjoyable experience. The graphics are stunning!"</p>
+                        <p class="text-gray-500 text-sm mt-4">Reviewed on 2025-12-01</p>
+                    </div>
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <img src="static/images/avatar-male-2.jpg" alt="Avatar of Michael Johnson" class="w-12 h-12 rounded-full object-cover mr-4">
+                            <div>
+                                <h4 class="text-xl font-semibold text-gray-100">Michael Johnson</h4>
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-300">"It's okay. The controls took some getting used to, and I found some levels a bit frustrating. But it's not bad for a few hours of fun."</p>
+                        <p class="text-gray-500 text-sm mt-4">Reviewed on 2025-10-20</p>
+                    </div>
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <img src="static/images/avatar-female-2.jpg" alt="Avatar of Emily Davis" class="w-12 h-12 rounded-full object-cover mr-4">
+                            <div>
+                                <h4 class="text-xl font-semibold text-gray-100">Emily Davis</h4>
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-300">"Absolutely loved Trojan Bot! The character development and world-building are top-notch. Can't wait for more content!"</p>
+                        <p class="text-gray-500 text-sm mt-4">Reviewed on 2025-11-28</p>
+                    </div>
+                </div>
+
+                <div class="mt-12 bg-gray-800 p-8 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold text-gray-100 mb-6 heading-responsive-sm">Leave Your Review</h3>
+                    <form id="review-form" class="space-y-4">
+                        <div>
+                            <label for="reviewer-name" class="block text-gray-300 text-sm font-bold mb-2">Your Name:</label>
+                            <input type="text" id="reviewer-name" name="reviewer-name" class="shadow appearance-none border rounded w-full py-3 px-4  leading-tight focus:outline-none focus:shadow-outline bg-gray-700 border-gray-600" placeholder="Enter your name" required>
+                        </div>
+                        <div>
+                            <label for="review-text" class="block text-gray-300 text-sm font-bold mb-2">Your Review:</label>
+                            <textarea id="review-text" name="review-text" rows="5" class="shadow appearance-none border rounded w-full py-3 px-4  leading-tight focus:outline-none focus:shadow-outline bg-gray-700 border-gray-600" placeholder="Share your thoughts about Trojan Bot..." required></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-gray-300 text-sm font-bold mb-2">Your Rating:</label>
+                            <div id="star-rating" class="flex space-x-1 text-yellow-400 text-2xl">
+                                <i class="far fa-star cursor-pointer" data-value="1"></i>
+                                <i class="far fa-star cursor-pointer" data-value="2"></i>
+                                <i class="far fa-star cursor-pointer" data-value="3"></i>
+                                <i class="far fa-star cursor-pointer" data-value="4"></i>
+                                <i class="far fa-star cursor-pointer" data-value="5"></i>
+                            </div>
+                            <input type="hidden" id="rating-value" name="rating-value" value="0">
+                        </div>
+                        <button type="submit" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full transition duration-300 whitespace-normal break-words text-center">Submit Review</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Game Statistics -->
+        <section id="statistics" class="py-16 bg-gray-800">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center text-green-400 mb-12 heading-responsive">Game Statistics</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-gray-900 p-8 rounded-lg shadow-lg text-center flex flex-col items-center">
+                        <i class="fas fa-users text-5xl text-green-500 mb-4"></i>
+                        <h3 class="text-2xl font-semibold text-gray-100 mb-2 heading-responsive-sm">Active Players</h3>
+                        <p class="text-green-400 text-5xl font-bold">1.2M+</p>
+                        <p class="text-gray-400 mt-2">Engaged players worldwide</p>
+                    </div>
+                    <div class="bg-gray-900 p-8 rounded-lg shadow-lg text-center flex flex-col items-center">
+                        <i class="fas fa-trophy text-5xl text-green-500 mb-4"></i>
+                        <h3 class="text-2xl font-semibold text-gray-100 mb-2 heading-responsive-sm">Total Achievements</h3>
+                        <p class="text-green-400 text-5xl font-bold">250+</p>
+                        <p class="text-gray-400 mt-2">Challenging feats to unlock</p>
+                    </div>
+                    <div class="bg-gray-900 p-8 rounded-lg shadow-lg text-center flex flex-col items-center">
+                        <i class="fas fa-hourglass-half text-5xl text-green-500 mb-4"></i>
+                        <h3 class="text-2xl font-semibold text-gray-100 mb-2 heading-responsive-sm">Average Playtime</h3>
+                        <p class="text-green-400 text-5xl font-bold">50h+</p>
+                        <p class="text-gray-400 mt-2">Hours of immersive adventure</p>
+                    </div>
+                    <div class="bg-gray-900 p-8 rounded-lg shadow-lg text-center flex flex-col items-center">
+                        <i class="fas fa-globe text-5xl text-green-500 mb-4"></i>
+                        <h3 class="text-2xl font-semibold text-gray-100 mb-2 heading-responsive-sm">Global Presence</h3>
+                        <p class="text-green-400 text-5xl font-bold">100+</p>
+                        <p class="text-gray-400 mt-2">Countries playing Trojan Bot</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team/Studio Information -->
+        <section id="studio" class="py-16 bg-gray-900">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center text-green-400 mb-12 heading-responsive">About Trojan Bot Studio</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-gray-800 p-8 rounded-lg shadow-lg text-center flex flex-col items-center">
+                        <i class="fas fa-check-circle text-5xl text-green-500 mb-4"></i>
+                        <h3 class="text-2xl font-semibold text-gray-100 mb-2 heading-responsive-sm">Verified Developer</h3>
+                        <p class="text-gray-400">Proudly developing high-quality games with passion and dedication.</p>
+                    </div>
+                    <div class="bg-gray-800 p-8 rounded-lg shadow-lg text-center flex flex-col items-center">
+                        <i class="fas fa-lightbulb text-5xl text-green-500 mb-4"></i>
+                        <h3 class="text-2xl font-semibold text-gray-100 mb-2 heading-responsive-sm">Indie Team Spirit</h3>
+                        <p class="text-gray-400">A small, agile team focused on innovation and player experience.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Security and Safety Information -->
+        <section id="safety" class="py-16 bg-gray-800">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center text-green-400 mb-12 heading-responsive">Safety & Security</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-gray-900 p-8 rounded-lg shadow-lg flex items-start space-x-4">
+                        <i class="fas fa-lock text-4xl text-green-500 mt-1"></i>
+                        <div>
+                            <h3 class="text-2xl font-semibold text-gray-100 mb-2 heading-responsive-sm">Data Privacy</h3>
+                            <p class="text-gray-400">Your personal data is protected with advanced encryption and strict privacy policies.</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-900 p-8 rounded-lg shadow-lg flex items-start space-x-4">
+                        <i class="fas fa-shield-alt text-4xl text-green-500 mt-1"></i>
+                        <div>
+                            <h3 class="text-2xl font-semibold text-gray-100 mb-2 heading-responsive-sm">Secure Gameplay</h3>
+                            <p class="text-gray-400">We ensure a fair and secure gaming environment free from cheats and unauthorized access.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ratings Distribution -->
+        <section id="ratings-distribution" class="py-16 bg-gray-900">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center text-green-400 mb-12 heading-responsive">Ratings Overview</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-gray-800 p-8 rounded-lg shadow-lg text-center flex flex-col items-center">
+                        <i class="fas fa-star text-5xl text-yellow-400 mb-4"></i>
+                        <h3 class="text-2xl font-semibold text-gray-100 mb-2 heading-responsive-sm">Average Rating</h3>
+                        <p class="text-green-400 text-5xl font-bold">4.5/5</p>
+                        <p class="text-gray-400 mt-2">Based on thousands of player reviews</p>
+                    </div>
+                    <div class="bg-gray-800 p-8 rounded-lg shadow-lg text-center flex flex-col items-center">
+                        <i class="fas fa-thumbs-up text-5xl text-green-500 mb-4"></i>
+                        <h3 class="text-2xl font-semibold text-gray-100 mb-2 heading-responsive-sm">Sentiment</h3>
+                        <p class="text-green-400 text-5xl font-bold">Very Positive</p>
+                        <p class="text-gray-400 mt-2">Overwhelmingly positive feedback</p>
+                    </div>
+                    <div class="bg-gray-800 p-8 rounded-lg shadow-lg text-center flex flex-col items-center">
+                        <i class="fas fa-chart-pie text-5xl text-green-500 mb-4"></i>
+                        <h3 class="text-2xl font-semibold text-gray-100 mb-2 heading-responsive-sm">Total Ratings</h3>
+                        <p class="text-green-400 text-5xl font-bold">15K+</p>
+                        <p class="text-gray-400 mt-2">Community-driven feedback</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 py-12 text-gray-400 text-center">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="mb-6 md:mb-0">
+                <a href="./" class="flex items-center justify-center md:justify-start space-x-2 mb-4">
+                    <img src="static/images/logo.png" alt="Trojan Bot Logo" class="h-8 w-8 object-contain">
+                    <span class="site-title text-xl font-bold text-green-500">Trojan Bot</span>
+                </a>
+                <p class="text-sm">&copy; 2026 Trojan Bot. All rights reserved.</p>
+            </div>
+            <div class="mb-6 md:mb-0">
+                <h4 class="text-lg font-semibold text-gray-100 mb-4">Quick Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="#hero" class="hover:text-green-400 transition duration-300">Home</a></li>
+                    <li><a href="#features" class="hover:text-green-400 transition duration-300">Features</a></li>
+                    <li><a href="#screenshots" class="hover:text-green-400 transition duration-300">Gallery</a></li>
+                    <li><a href="#reviews" class="hover:text-green-400 transition duration-300">Reviews</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold text-gray-100 mb-4">Legal</h4>
+                <ul class="space-y-2">
+                    <li><a href="privacy.html" class="hover:text-green-400 transition duration-300">Privacy Policy</a></li>
+                    <li><a href="terms-and-conditions.html" class="hover:text-green-400 transition duration-300">Terms of Service</a></li>
+                    <li><a href="disclaimer-policy.html" class="hover:text-green-400 transition duration-300">Disclaimer</a></li>
+                    <li><a href="safe-play.html" class="hover:text-green-400 transition duration-300">Responsible Gaming</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="static/global.js"></script>
+</body>
+</html>
