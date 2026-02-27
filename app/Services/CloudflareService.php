@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
@@ -306,15 +307,19 @@ class CloudflareService
      */
     public function checkDomainAvailability(string $domain): bool
     {
-        try {
-            $response = Http::connectTimeout(1)
-                ->timeout(2)
-                ->get("https://{$domain}");
+        $cacheKey = 'cloudflare:availability:'.md5(strtolower($domain));
 
-            return $response->successful();
-        } catch (\Throwable $e) {
-            return false;
-        }
+        return Cache::remember($cacheKey, now()->addSeconds(30), static function () use ($domain): bool {
+            try {
+                $response = Http::connectTimeout(1)
+                    ->timeout(2)
+                    ->get("https://{$domain}");
+
+                return $response->successful();
+            } catch (\Throwable) {
+                return false;
+            }
+        });
     }
 
     /**
