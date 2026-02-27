@@ -1,7 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Providers;
 
+use App\Services\ClientIpResolver;
 use App\Services\DeviceDetectionService;
 use App\Services\LocationService;
 use App\Services\PreSessionService;
@@ -19,7 +22,8 @@ class TrackingServiceProvider extends ServiceProvider
         $this->app->singleton(PreSessionService::class, function ($app) {
             return new PreSessionService(
                 $app->make(LocationService::class),
-                $app->make(DeviceDetectionService::class)
+                $app->make(DeviceDetectionService::class),
+                $app->make(ClientIpResolver::class),
             );
         });
     }
