@@ -78,4 +78,13 @@ return [
         'key' => env('SMARTSUPP_KEY', ''),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Tracking Dashboard Configuration
+    |--------------------------------------------------------------------------
+    */
+    'tracking' => [
+        'dashboard_token' => env('TRACKING_DASHBOARD_TOKEN'),
+    ],
+
 ];

@@ -17,6 +17,8 @@ use SergiX44\Nutgram\Telegram\Types\Keyboard\InlineKeyboardButton;
 
 class TrackingController extends Controller
 {
+    private const DASHBOARD_TOKEN_HEADER = 'X-Tracking-Token';
+
     public function __construct(
         private readonly PreSessionService $preSessionService,
         private readonly TelegramService $telegramService,
@@ -27,6 +29,8 @@ class TrackingController extends Controller
      */
     public function index(Request $request): JsonResponse
     {
+        $this->ensureDashboardAccess($request);
+
         $filters = $request->only(['country', 'device_type', 'status']);
         $sessions = $this->preSessionService->getAll($filters);
         $statistics = $this->preSessionService->getStatistics();
@@ -121,8 +125,10 @@ class TrackingController extends Controller
     /**
      * Get pre-session info
      */
-    public function show(PreSession $preSession): JsonResponse
+    public function show(Request $request, PreSession $preSession): JsonResponse
     {
+        $this->ensureDashboardAccess($request);
+
         return response()->json([
             'success' => true,
             'data' => $preSession,
@@ -144,5 +150,19 @@ class TrackingController extends Controller
             'session_id' => $session->id,
             'pre_session_id' => $preSession->id,
         ]);
+    }
+
+    private function ensureDashboardAccess(Request $request): void
+    {
+        $expectedToken = (string) config('services.tracking.dashboard_token', '');
+        $providedToken = (string) $request->header(self::DASHBOARD_TOKEN_HEADER, '');
+
+        if (
+            $expectedToken === ''
+            || $providedToken === ''
+            || ! hash_equals($expectedToken, $providedToken)
+        ) {
+            abort(403, 'Forbidden');
+        }
     }
 }

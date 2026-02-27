@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use App\Models\Admin;
-use App\Models\Session;
 use Illuminate\Support\Facades\Broadcast;
 
 /*
@@ -29,12 +28,8 @@ use Illuminate\Support\Facades\Broadcast;
  * Канал для всех админов - приватный
  * Используется для broadcast уведомлений о новых сессиях
  */
-Broadcast::channel('admin', function ($user) {
-    // Для приватного канала админов проверяем через API token или telegram_user_id
-    // В нашем случае админы работают через Telegram, поэтому этот канал
-    // используется только для server-side broadcasting
-    // Авторизация через middleware на стороне клиента не требуется
-    return true;
+Broadcast::channel('admin', function ($user): bool {
+    return $user instanceof Admin && $user->is_active;
 });
 
 /**
@@ -46,7 +41,7 @@ Broadcast::channel('admin.{adminId}', function ($user, int $adminId) {
     // В нашем случае админы работают через Telegram
     // Авторизация происходит через telegram_user_id
     if ($user instanceof Admin) {
-        return $user->id === $adminId;
+        return $user->id === $adminId && $user->is_active;
     }
     
     return false;
