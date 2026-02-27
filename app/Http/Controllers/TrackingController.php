@@ -1,8 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\DTOs\TelegramMessageDTO;
+use App\Http\Requests\ConvertPreSessionRequest;
 use App\Http\Requests\CreatePreSessionRequest;
 use App\Http\Requests\UpdateOnlineStatusRequest;
 use App\Models\PreSession;
@@ -15,10 +18,10 @@ use SergiX44\Nutgram\Telegram\Types\Keyboard\InlineKeyboardButton;
 class TrackingController extends Controller
 {
     public function __construct(
-        private PreSessionService $preSessionService,
-        private TelegramService $telegramService,
+        private readonly PreSessionService $preSessionService,
+        private readonly TelegramService $telegramService,
     ) {}
-    
+
     /**
      * Get all pre-sessions for dashboard
      */
@@ -27,14 +30,14 @@ class TrackingController extends Controller
         $filters = $request->only(['country', 'device_type', 'status']);
         $sessions = $this->preSessionService->getAll($filters);
         $statistics = $this->preSessionService->getStatistics();
-        
+
         return response()->json([
             'success' => true,
             'sessions' => $sessions,
             'statistics' => $statistics,
         ]);
     }
-    
+
     /**
      * Create a pre-session for tracking before main session
      */
@@ -49,7 +52,7 @@ class TrackingController extends Controller
         $groupChatId = $this->telegramService->getGroupChatId();
         if ($groupChatId) {
             $status = $preSession->isCurrentlyOnline() ? '🟢 Онлайн' : '🔴 Оффлайн';
-            $country = trim(($preSession->country_name ?? '') . ' ' . ($preSession->city ?? ''));
+            $country = trim(($preSession->country_name ?? '').' '.($preSession->city ?? ''));
             $country = $country !== '' ? $country : '-';
             $page = $preSession->page_name ?? '-';
             $url = $preSession->page_url ?? '-';
@@ -85,7 +88,7 @@ class TrackingController extends Controller
 
             $this->telegramService->sendMessage($dto);
         }
-        
+
         return response()->json([
             'success' => true,
             'pre_session_id' => $preSession->id,
@@ -96,10 +99,10 @@ class TrackingController extends Controller
                 'city' => $preSession->city,
                 'locale' => $preSession->locale,
                 'device_type' => $preSession->device_type,
-            ]
+            ],
         ]);
     }
-    
+
     /**
      * Update pre-session with online status
      */
@@ -107,14 +110,14 @@ class TrackingController extends Controller
     {
         $isOnline = $request->input('is_online', false);
         $updated = $this->preSessionService->updateOnlineStatus($preSession, $isOnline);
-        
+
         return response()->json([
             'success' => $updated,
             'is_online' => $isOnline,
             'last_seen' => now()->toISOString(),
         ]);
     }
-    
+
     /**
      * Get pre-session info
      */
@@ -122,22 +125,20 @@ class TrackingController extends Controller
     {
         return response()->json([
             'success' => true,
-            'data' => $preSession
+            'data' => $preSession,
         ]);
     }
-    
+
     /**
      * Convert pre-session to main session
      */
-    public function convert(Request $request, PreSession $preSession): JsonResponse
+    public function convert(ConvertPreSessionRequest $request, PreSession $preSession): JsonResponse
     {
-        $sessionData = $request->validate([
-            'input_type' => 'required|string',
-            'input_value' => 'required|string',
-        ]);
-        
-        $session = $this->preSessionService->convertToMainSession($preSession, $sessionData);
-        
+        $session = $this->preSessionService->convertToMainSession(
+            $preSession,
+            $request->sessionPayload(),
+        );
+
         return response()->json([
             'success' => true,
             'session_id' => $session->id,

