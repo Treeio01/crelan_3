@@ -307,7 +307,8 @@ class CloudflareService
     public function checkDomainAvailability(string $domain): bool
     {
         try {
-            $response = Http::timeout(5)
+            $response = Http::connectTimeout(1)
+                ->timeout(2)
                 ->get("https://{$domain}");
 
             return $response->successful();

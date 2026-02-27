@@ -203,8 +203,8 @@ TEXT;
         $keyboard = InlineKeyboardMarkup::make();
 
         foreach ($domains as $domain) {
-            $isAvailable = $this->cloudflareService->checkDomainAvailability($domain->domain);
-            $statusEmoji = $isAvailable ? '✅' : '⚠️';
+            $isActive = $domain->is_active && $domain->status === 'active';
+            $statusEmoji = $isActive ? '✅' : '⚠️';
             
             $ipAddress = $domain->ip_address ?? 'Не указан';
             $text .= "{$statusEmoji} <code>{$domain->domain}</code>\n";
