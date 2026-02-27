@@ -22,3 +22,7 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
+# Local agent artifacts
+.agents/
+skills-lock.json
