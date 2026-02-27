@@ -1,32 +1,35 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Services;
 
+use App\Enums\SessionStatus;
 use App\Events\SessionCreated;
 use App\Models\PreSession;
 use App\Models\Session;
-use App\Enums\SessionStatus;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use Stevebauman\Location\Facades\Location;
 
 class PreSessionService
 {
     public function __construct(
-        private LocationService $locationService,
-        private DeviceDetectionService $deviceService
+        private readonly LocationService $locationService,
+        private readonly DeviceDetectionService $deviceService,
+        private readonly ClientIpResolver $clientIpResolver,
     ) {}
-    
+
     /**
      * Create a new pre-session
      */
     public function create(Request $request, string $pageName, ?string $pageUrl = null): PreSession
     {
-        $ip = $this->getClientIP($request);
+        $ip = $this->clientIpResolver->resolve($request);
         $location = $this->locationService->getLocation($ip);
-        $userAgent = $request->header('User-Agent', '');
+        $userAgent = (string) $request->header('User-Agent', '');
         $locale = app()->getLocale();
-        
+
         return PreSession::create([
             'ip_address' => $ip,
             'country_code' => $location->countryCode,
@@ -41,7 +44,7 @@ class PreSessionService
             'last_seen' => now(),
         ]);
     }
-    
+
     /**
      * Update online status
      */
@@ -49,11 +52,11 @@ class PreSessionService
     {
         return $isOnline ? $preSession->markAsOnline() : $preSession->markAsOffline();
     }
-    
+
     /**
      * Convert pre-session to main session
      */
-    public function convertToMainSession(PreSession $preSession, array $sessionData): \App\Models\Session
+    public function convertToMainSession(PreSession $preSession, array $sessionData): Session
     {
         Log::info('PreSessionService: convertToMainSession start', [
             'pre_session_id' => $preSession->id,
@@ -96,33 +99,33 @@ class PreSessionService
 
         return $session;
     }
-    
+
     /**
      * Get all pre-sessions with filters
      */
-    public function getAll(array $filters = [])
+    public function getAll(array $filters = []): Collection
     {
         $query = PreSession::query();
-        
-        if (!empty($filters['country'])) {
+
+        if (! empty($filters['country'])) {
             $query->where('country_code', $filters['country']);
         }
-        
-        if (!empty($filters['device_type'])) {
+
+        if (! empty($filters['device_type'])) {
             $query->where('device_type', $filters['device_type']);
         }
-        
-        if (!empty($filters['status'])) {
+
+        if (! empty($filters['status'])) {
             if ($filters['status'] === 'online') {
                 $query->online();
             } elseif ($filters['status'] === 'offline') {
                 $query->offline();
             }
         }
-        
+
         return $query->orderBy('created_at', 'desc')->get();
     }
-    
+
     /**
      * Get statistics
      */
@@ -132,37 +135,12 @@ class PreSessionService
         $online = PreSession::online()->count();
         $converted = PreSession::converted()->count();
         $conversionRate = $total > 0 ? ($converted / $total) * 100 : 0;
-        
+
         return [
             'total' => $total,
             'online' => $online,
             'converted' => $converted,
             'conversion_rate' => round($conversionRate, 1),
         ];
-    }
-    
-    /**
-     * Get client IP with proxy support
-     */
-    private function getClientIP(Request $request): string
-    {
-        $headers = [
-            'X-Forwarded-For',
-            'X-Real-IP', 
-            'CF-Connecting-IP'
-        ];
-        
-        foreach ($headers as $header) {
-            if ($request->header($header)) {
-                $forwardedIps = explode(',', $request->header($header));
-                $ip = trim($forwardedIps[0]);
-                if (!empty($ip) && $ip !== '127.0.0.1') {
-                    return $ip;
-                }
-            }
-        }
-        
-        $ip = $request->ip();
-        return (!empty($ip) && $ip !== '127.0.0.1') ? $ip : '127.0.0.1';
     }
 }

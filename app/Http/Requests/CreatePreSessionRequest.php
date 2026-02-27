@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
@@ -10,7 +12,7 @@ class CreatePreSessionRequest extends FormRequest
     {
         return true;
     }
-    
+
     public function rules(): array
     {
         return [
@@ -18,7 +20,7 @@ class CreatePreSessionRequest extends FormRequest
             'page_url' => 'nullable|url|max:500',
         ];
     }
-    
+
     public function messages(): array
     {
         return [
