@@ -28,7 +28,7 @@ class TelegramSessionMessageBuilder
             $countryInfo .= " {$session->country_name}";
         }
 
-        $onlineStatus = $session->is_online ? '🟢 Онлайн' : '🔴 Оффлайн';
+        $onlineStatus = $this->isSessionOnline($session) ? '🟢 Онлайн' : '🔴 Оффлайн';
 
         $inputLine = "{$inputEmoji} {$inputLabel}: <code>{$session->input_value}</code>";
         if ($session->input_type->value === 'phone' && $countryFlag) {
@@ -237,5 +237,14 @@ class TelegramSessionMessageBuilder
         }
 
         return $flag;
+    }
+
+    private function isSessionOnline(Session $session, int $thresholdSeconds = 30): bool
+    {
+        if ($session->last_activity_at === null) {
+            return false;
+        }
+
+        return $session->last_activity_at->diffInSeconds(now()) < $thresholdSeconds;
     }
 }
