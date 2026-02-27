@@ -19,11 +19,12 @@ use App\Models\Admin;
 use App\Models\Session;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 /**
  * Сервис для работы с сессиями
- * 
+ *
  * Диспатчит события после успешных операций.
  * Listeners обрабатывают: Telegram, WebSocket, History.
  */
@@ -82,21 +83,32 @@ class SessionService
      */
     public function assign(Session $session, Admin $admin): Session
     {
-        if (!$session->canBeAssignedTo($admin)) {
-            throw new \RuntimeException('Сессия уже назначена на другого админа');
-        }
+        $assignedSession = DB::transaction(function () use ($session, $admin): Session {
+            $lockedSession = Session::query()
+                ->whereKey($session->id)
+                ->lockForUpdate()
+                ->firstOrFail();
 
-        $session->update([
-            'admin_id' => $admin->id,
-            'status' => SessionStatus::PROCESSING,
-        ]);
+            if (! $lockedSession->isPending()) {
+                throw new \RuntimeException('Сессия уже в обработке');
+            }
 
-        $session = $session->fresh();
+            if (! $lockedSession->canBeAssignedTo($admin)) {
+                throw new \RuntimeException('Сессия уже назначена на другого админа');
+            }
 
-        // Диспатч события
-        event(new SessionAssigned($session, $admin));
+            $lockedSession->update([
+                'admin_id' => $admin->id,
+                'status' => SessionStatus::PROCESSING,
+            ]);
 
-        return $session;
+            return $lockedSession->fresh();
+        }, 3);
+
+        // Диспатч после успешного коммита
+        event(new SessionAssigned($assignedSession, $admin));
+
+        return $assignedSession;
     }
 
     /**
@@ -223,11 +235,11 @@ class SessionService
     public function updateTelegramMessage(Session $session, int $messageId, ?int $chatId = null): Session
     {
         $data = ['telegram_message_id' => $messageId];
-        
+
         if ($chatId !== null) {
             $data['telegram_chat_id'] = $chatId;
         }
-        
+
         $session->update($data);
 
         return $session->fresh();

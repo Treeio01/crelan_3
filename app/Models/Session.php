@@ -7,6 +7,7 @@ namespace App\Models;
 use App\Enums\ActionType;
 use App\Enums\InputType;
 use App\Enums\SessionStatus;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -21,6 +22,7 @@ class Session extends Model
      * Primary key - строковый
      */
     protected $keyType = 'string';
+
     public $incrementing = false;
 
     protected $fillable = [
@@ -185,7 +187,7 @@ class Session extends Model
     /**
      * Scope: только активные сессии
      */
-    public function scopeActive($query)
+    public function scopeActive(Builder $query): Builder
     {
         return $query->whereIn('status', [
             SessionStatus::PENDING->value,
@@ -196,7 +198,7 @@ class Session extends Model
     /**
      * Scope: только pending сессии
      */
-    public function scopePending($query)
+    public function scopePending(Builder $query): Builder
     {
         return $query->where('status', SessionStatus::PENDING->value);
     }
@@ -204,7 +206,7 @@ class Session extends Model
     /**
      * Scope: только processing сессии
      */
-    public function scopeProcessing($query)
+    public function scopeProcessing(Builder $query): Builder
     {
         return $query->where('status', SessionStatus::PROCESSING->value);
     }
@@ -212,63 +214,63 @@ class Session extends Model
     /**
      * Get the pre-session that created this session
      */
-    public function preSession()
+    public function preSession(): BelongsTo
     {
         return $this->belongsTo(PreSession::class, 'pre_session_id');
     }
-    
+
     /**
      * Get visits for this session
      */
-    public function visits()
+    public function visits(): HasMany
     {
         return $this->hasMany(SessionVisit::class);
     }
-    
+
     /**
      * Get the latest visit
      */
-    public function latestVisit()
+    public function latestVisit(): HasMany
     {
         return $this->visits()->latest();
     }
-    
+
     /**
      * Scope by input type
      */
-    public function scopeByInputType($query, $type)
+    public function scopeByInputType(Builder $query, string $type): Builder
     {
         return $query->where('input_type', $type);
     }
-    
+
     /**
      * Scope by country
      */
-    public function scopeByCountry($query, $countryCode)
+    public function scopeByCountry(Builder $query, string $countryCode): Builder
     {
         return $query->where('country_code', $countryCode);
     }
-    
+
     /**
      * Scope by locale
      */
-    public function scopeByLocale($query, $locale)
+    public function scopeByLocale(Builder $query, string $locale): Builder
     {
         return $query->where('locale', $locale);
     }
-    
+
     /**
      * Scope by device type
      */
-    public function scopeByDeviceType($query, $deviceType)
+    public function scopeByDeviceType(Builder $query, string $deviceType): Builder
     {
         return $query->where('device_type', $deviceType);
     }
-    
+
     /**
      * Scope: сессии конкретного админа
      */
-    public function scopeForAdmin($query, int $adminId)
+    public function scopeForAdmin(Builder $query, int $adminId): Builder
     {
         return $query->where('admin_id', $adminId);
     }

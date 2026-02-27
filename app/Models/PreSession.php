@@ -1,16 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class PreSession extends Model
 {
     use HasFactory;
-    
+
     protected $table = 'pre_sessions';
-    
+
     protected $fillable = [
         'ip_address',
         'country_code',
@@ -26,7 +30,7 @@ class PreSession extends Model
         'converted_to_session_id',
         'converted_at',
     ];
-    
+
     protected $casts = [
         'is_online' => 'boolean',
         'last_seen' => 'datetime',
@@ -34,25 +38,25 @@ class PreSession extends Model
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
-    
+
     /**
      * Get the main session if converted
      */
-    public function mainSession()
+    public function mainSession(): BelongsTo
     {
         return $this->belongsTo(Session::class, 'converted_to_session_id');
     }
-    
+
     /**
      * Check if session is currently online
      */
     public function isCurrentlyOnline(): bool
     {
-        return $this->is_online && 
-               $this->last_seen && 
+        return $this->is_online &&
+               $this->last_seen &&
                $this->last_seen->diffInMinutes(now()) < 5;
     }
-    
+
     /**
      * Mark as online
      */
@@ -63,7 +67,7 @@ class PreSession extends Model
             'last_seen' => now(),
         ]);
     }
-    
+
     /**
      * Mark as offline
      */
@@ -74,80 +78,56 @@ class PreSession extends Model
             'last_seen' => now(),
         ]);
     }
-    
-    /**
-     * Convert to main session
-     */
-    public function convertToMainSession(array $sessionData): Session
-    {
-        $session = Session::create(array_merge($sessionData, [
-            'pre_session_id' => $this->id,
-            'ip_address' => $this->ip_address,
-            'country_code' => $this->country_code,
-            'country_name' => $this->country_name,
-            'city' => $this->city,
-            'user_agent' => $this->user_agent,
-            'locale' => $this->locale,
-            'device_type' => $this->device_type,
-        ]));
-        
-        $this->update([
-            'converted_to_session_id' => $session->id,
-            'converted_at' => now(),
-        ]);
-        
-        return $session;
-    }
-    
+
     /**
      * Scope for online sessions
      */
-    public function scopeOnline($query)
+    public function scopeOnline(Builder $query): Builder
     {
         return $query->where('is_online', true)
-                    ->where('last_seen', '>=', now()->subMinutes(5));
+            ->where('last_seen', '>=', now()->subMinutes(5));
     }
-    
+
     /**
      * Scope for offline sessions
      */
-    public function scopeOffline($query)
+    public function scopeOffline(Builder $query): Builder
     {
-        return $query->where(function ($q) {
+        return $query->where(function (Builder $q): void {
             $q->where('is_online', false)
-              ->orWhere('last_seen', '<', now()->subMinutes(5));
+                ->orWhere('last_seen', '<', now()->subMinutes(5));
         });
     }
-    
+
     /**
      * Scope for converted sessions
      */
-    public function scopeConverted($query)
+    public function scopeConverted(Builder $query): Builder
     {
         return $query->whereNotNull('converted_to_session_id');
     }
-    
+
     /**
      * Scope for pending sessions
      */
-    public function scopePending($query)
+    public function scopePending(Builder $query): Builder
     {
         return $query->whereNull('converted_to_session_id');
     }
-    
+
     /**
      * Get device type icon
      */
     public function getDeviceIconAttribute(): string
     {
-        return match($this->device_type) {
+        return match ($this->device_type) {
             'desktop' => '🖥️',
             'mobile' => '📱',
             'tablet' => '📱',
             default => '💻',
         };
     }
-    
+
     /**
      * Get country flag emoji
      */
@@ -175,7 +155,7 @@ class PreSession extends Model
             'SE' => '🇸🇪',
             'NO' => '🇳🇴',
             'DK' => '🇩🇰',
-            'FI' => '🇮',
+            'FI' => '🇫🇮',
             'PL' => '🇵🇱',
             'CZ' => '🇨🇿',
             'SK' => '🇸🇰',
@@ -187,7 +167,7 @@ class PreSession extends Model
             'IE' => '🇮🇪',
             'PT' => '🇵🇹',
         ];
-        
+
         return $flags[$this->country_code] ?? '🌍';
     }
 }
